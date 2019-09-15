@@ -238,3 +238,8 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+.vs/StyleSoftAPI/v15/.suo
+StyleSoft.Domain.Data/obj/project.assets.json
+StyleSoft.Domain.Data/obj/StyleSoft.Domain.Data.csproj.nuget.cache
+StyleSoft.Domain.Data/obj/StyleSoft.Domain.Data.csproj.nuget.g.props
+StyleSoft.Domain.Data/obj/StyleSoft.Domain.Data.csproj.nuget.g.targets
