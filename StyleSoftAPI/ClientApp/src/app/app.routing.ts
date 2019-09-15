@@ -13,9 +13,11 @@ export const routes: Routes = [
         component: PagesComponent,
         children: [
             { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } },
+            { path: 'saloonview', loadChildren: './pages/saloon/saloon-view/saloon.view.module#SaloonViewModule', data: { breadcrumb: 'Saloon View' } },
+
             { path: 'blank', component: BlankComponent, data: { breadcrumb: 'Blank page' } },
-            { path: 'saloon', component: SaloonDetailsComponent, data: { breadcrumb: 'Saloon Details' } },
-            { path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon View Details' } },
+            //{ path: 'saloon', component: SaloonDetailsComponent, data: { breadcrumb: 'Saloon Details' } },
+            //{ path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon View Details' } },
             { path: 'search', component: SearchComponent, data: { breadcrumb: 'Search' } }
         ]
     },

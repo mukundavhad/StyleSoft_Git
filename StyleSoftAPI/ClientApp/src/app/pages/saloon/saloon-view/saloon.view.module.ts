@@ -21,8 +21,8 @@ import { SaloonViewComponent } from './saloon-view.component';
         //ValidationBorderModule,
         CommonModule
   ],
-   declarations: [SaloonViewComponent]
-  
+   declarations: [SaloonViewComponent],
+   exports : [SaloonViewComponent]
 })
   export class SaloonViewModule {
  
