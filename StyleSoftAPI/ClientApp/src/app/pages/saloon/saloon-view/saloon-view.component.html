@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <!--<button class="btn btn-outline-primary" (click)="exportAsXLSX()"><i class="fa fa-plus-circle"></i>&nbsp;Export To Excel </button>-->
+            <div class="col-md-1"></div>
+            <button type="button" class="btn btn-outline-primary" (click)="redirectToAddNew()"><i class="fa fa-plus-circle"></i>&nbsp; Add New </button>
+        </div>
+    </div>
+</div>
+
+<ag-grid-angular style="height: 500px;"
+                 id="myGrid"
+                 class="ag-theme-balham"
+                 [rowData]="rowData"
+                 [columnDefs]="columnDefs"
+                 [defaultColDef]="defaultColDef"
+                 [floatingFilter]="true"
+                 (gridReady)="onGridReady($event)">
+</ag-grid-angular>

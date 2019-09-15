@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleSoftAPI", "StyleSoftAPI\StyleSoftAPI.csproj", "{D440B085-B84D-47F9-9F32-B318D067B2C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleSoft.Domain.Data", "StyleSoft.Domain.Data\StyleSoft.Domain.Data.csproj", "{9DBEEE59-DB03-4641-A734-AADA473A0D5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D440B085-B84D-47F9-9F32-B318D067B2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D440B085-B84D-47F9-9F32-B318D067B2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D440B085-B84D-47F9-9F32-B318D067B2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D440B085-B84D-47F9-9F32-B318D067B2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBEEE59-DB03-4641-A734-AADA473A0D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBEEE59-DB03-4641-A734-AADA473A0D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBEEE59-DB03-4641-A734-AADA473A0D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBEEE59-DB03-4641-A734-AADA473A0D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EC13B62-4CC4-4FEC-8EDA-AC50A2365CC6}
+	EndGlobalSection
+EndGlobal
