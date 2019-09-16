@@ -23,12 +23,12 @@ import { UserMenuComponent } from './theme/components/user-menu/user-menu.compon
 import { BlankComponent } from './pages/blank/blank.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
-import { SaloonDetailsComponent } from './pages/saloon/saloon-details/saloon-details.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module";
 import { DialogModule } from "./dialog/dialog.module";
+import { SaloonDetailsModule } from "./pages/saloon/saloon-details/saloon.details.module";
 
 
 @NgModule({  
@@ -42,6 +42,7 @@ import { DialogModule } from "./dialog/dialog.module";
         routing,
         SaloonViewModule,
         DialogModule,
+        SaloonDetailsModule
   ],
   declarations: [
     AppComponent,
@@ -55,7 +56,6 @@ import { DialogModule } from "./dialog/dialog.module";
     BackTopComponent,
     UserMenuComponent,
     BlankComponent,
-    SaloonDetailsComponent,
     SearchComponent,    
     NotFoundComponent,
 

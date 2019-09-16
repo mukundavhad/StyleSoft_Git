@@ -12,7 +12,7 @@ import { DialogConfig } from "src/app/dialog/dialog-config";
 export class DialogComponent implements AfterViewInit, OnDestroy {
   componentRef: ComponentRef<any>;
 
-  @ViewChild(InsertionDirective, {read:true,static:false})
+  @ViewChild(InsertionDirective, { static: false })
   insertionPoint: InsertionDirective;
 
   private readonly _onClose = new Subject<any>();
