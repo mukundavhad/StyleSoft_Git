@@ -13,7 +13,8 @@ export const routes: Routes = [
         component: PagesComponent,
         children: [
             { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } },
-            { path: 'saloonview', loadChildren: './pages/saloon/saloon-view/saloon.view.module#SaloonViewModule', data: { breadcrumb: 'Saloon View' } },
+           // { path: 'saloonview', loadChildren: './pages/saloon/saloon-view/saloon.view.module#SaloonViewModule', data: { breadcrumb: 'Saloon View' } },
+            { path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon View' } },
 
             { path: 'blank', component: BlankComponent, data: { breadcrumb: 'Blank page' } },
             //{ path: 'saloon', component: SaloonDetailsComponent, data: { breadcrumb: 'Saloon Details' } },
@@ -27,6 +28,6 @@ export const routes: Routes = [
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules,  // <- comment this line for enable lazy load
-    // useHash: true
+    //preloadingStrategy: PreloadAllModules,  // <- comment this line for enable lazy load
+     useHash: true
 });

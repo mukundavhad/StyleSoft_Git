@@ -27,6 +27,7 @@ import { SaloonDetailsComponent } from './pages/saloon/saloon-details/saloon-det
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module";
 
 
 @NgModule({  
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
         BrowserModule,
         PerfectScrollbarModule,
         HttpClientModule,
-    routing
+        routing,
+        SaloonViewModule,
   ],
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     BlankComponent,
     SaloonDetailsComponent,
     SearchComponent,    
-    NotFoundComponent
+      NotFoundComponent,
+
   ],
   providers: [ 
     AppSettings,

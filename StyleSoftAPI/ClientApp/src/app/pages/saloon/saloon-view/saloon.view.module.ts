@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 //import { DialogModule } from '../../dialog/dialog.module';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { SaloonViewComponent } from './saloon-view.component';
-//import { AutoCompleteModule } from 'primeng';
+import { PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   imports: [
@@ -22,7 +22,12 @@ import { SaloonViewComponent } from './saloon-view.component';
         CommonModule
   ],
    declarations: [SaloonViewComponent],
-   exports : [SaloonViewComponent]
+   exports: [SaloonViewComponent],
+   providers: [PageService,
+       SortService,
+       FilterService,
+       GroupService]
+
 })
   export class SaloonViewModule {
  
