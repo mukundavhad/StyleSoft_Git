@@ -8,7 +8,7 @@ import { SaloonDetailsComponent } from '../saloon-details/saloon-details.compone
 
 
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
-
+import { DialogService } from '../../../dialog/dialog.service';
 
 @Component({
     selector: 'app-saloon-view',
@@ -21,7 +21,8 @@ export class SaloonViewComponent implements OnInit {
     public pageSettings: PageSettingsModel;
 
 
-    constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private saloondetailsservice: SaloonDetailsService) { }
+    constructor(private router: Router, private formBuilder: FormBuilder,
+        private dialog:DialogService, private http: HttpClient, private saloondetailsservice: SaloonDetailsService) { }
 
     ngOnInit() {
 
@@ -31,7 +32,10 @@ export class SaloonViewComponent implements OnInit {
 
 
     redirectToAddNew() {
-      
+        const ref = this.dialog.open(SaloonDetailsComponent, { data: {}, modalConfig: { title: 'Add/Edit Booking Order' }, isEditable: true });
+        ref.afterClosed.subscribe(result => {
+            //this.RefreshGrid();
+        });
     }
 }
 

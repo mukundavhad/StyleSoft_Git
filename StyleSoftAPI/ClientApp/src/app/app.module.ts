@@ -28,6 +28,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module";
+import { DialogModule } from "./dialog/dialog.module";
 
 
 @NgModule({  
@@ -40,6 +41,7 @@ import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module"
         HttpClientModule,
         routing,
         SaloonViewModule,
+        DialogModule,
   ],
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module"
     BlankComponent,
     SaloonDetailsComponent,
     SearchComponent,    
-      NotFoundComponent,
+    NotFoundComponent,
 
   ],
   providers: [ 

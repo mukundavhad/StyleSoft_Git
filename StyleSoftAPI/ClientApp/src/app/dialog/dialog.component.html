@@ -1,0 +1,29 @@
+<div class="overlay" style="z-index:9999" >
+  
+    
+  <div style="padding:20px;background-color:#e9ecef;border-top-left-radius: .55rem;border-top-right-radius: .55rem;"  [style.width]="modalConfig?.width">
+    <div class="row">
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-10">
+        <div class="ui-dialog-titlebar ui-helper-clearfix ui-corner-top">
+          <span class="ui-dialog-title ng-tns-c3-3">{{modalConfig?.title}}</span>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <div href="#" (click)="onOverlayClicked($event)" style="float:right;cursor:pointer" role="button" class="ng-tns-c3-3 ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all">
+          <i class="e-icons close-wf " style="font-size:large"></i>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="dialog" [style.height]="modalConfig?.height" [style.max-width]="modalConfig?.width"  [style.width]="modalConfig?.width"  >
+    <ng-template appInsertion>
+    </ng-template>
+  </div>
+  <div style="padding:5px;background-color:#e9ecef;border-bottom-left-radius:.55rem;border-bottom-right-radius: .55rem;" [style.max-width]="modalConfig?.width" [style.width]="modalConfig?.width">
+  </div>
+</div>
