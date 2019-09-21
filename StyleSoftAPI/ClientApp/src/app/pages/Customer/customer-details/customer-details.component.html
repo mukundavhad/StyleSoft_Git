@@ -1,0 +1,106 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Customer Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Customer Name :</strong></label>
+                                <input formControlName="CustomerName" appValidationBorder type="text" pInputText id="customername" name="customername" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Mobile No:</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="CustomerMobile" appValidationBorder type="text" pInputText id="customermobile" name="customermobile" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Relation Type :</strong></label>
+                                <select formControlName="RelationType" appValidationBorder id="select" name="select" class="form-control">
+                                    <option value="Please select">Please select</option>
+                                    <option value="Self">Self</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Child-1">Child-1</option>
+                                    <option value="Guest">Guest</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Gender :</strong></label>
+                                <select formControlName="Gender" appValidationBorder id="select" name="select" class="form-control">
+                                    <option value="Please select">Please select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Date of Birth :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <!--<p-calendar formControlName="DateofBirth" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>-->
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Alternate Contact:</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="AlternateContact" appValidationBorder type="text" pInputText id="alternatecontact" name="alternatecontact" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Email Id :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="EmailId" type="text" pInputText id="emailid" name="emailid" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

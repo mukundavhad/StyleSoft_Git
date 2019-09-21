@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\StyleSoftAPI",
+    "\\StyleSoftAPI\\ClientApp",
+    "\\StyleSoftAPI\\ClientApp\\e2e\\src"
   ],
+  "SelectedNode": "\\StyleSoftAPI",
   "PreviewInSolutionExplorer": false
 }

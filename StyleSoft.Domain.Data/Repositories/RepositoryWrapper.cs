@@ -17,6 +17,59 @@ namespace StyleSoft.Domain.Data.Repositories
 
         private SaloonDetailsRepository _saloon;
 
+        private EnrolledSalonDetailsRepository _enrolledsalon;
+        private AddressDetailsRepository _address;
+        private CustomerDetailsRepository _customer;
+        private StaffDetailsRepository _staff;
+
+        public IStaffDetailsRepository Staff
+        {
+            get
+            {
+                if (_staff == null)
+                {
+                    _staff = new StaffDetailsRepository(_repoContext);
+                }
+
+                return _staff;
+            }
+        }
+        public ICustomerDetailsRepository Customer
+        {
+            get
+            {
+                if (_customer == null)
+                {
+                    _customer = new CustomerDetailsRepository(_repoContext);
+                }
+
+                return _customer;
+            }
+        }
+        public IAddressDetailsRepository Address
+        {
+            get
+            {
+                if (_address == null)
+                {
+                    _address = new AddressDetailsRepository(_repoContext);
+                }
+
+                return _address;
+            }
+        }
+        public IEnrolledSalonDetailsRepository EnrolledSalon
+        {
+            get
+            {
+                if (_enrolledsalon == null)
+                {
+                    _enrolledsalon = new EnrolledSalonDetailsRepository(_repoContext);
+                }
+
+                return _enrolledsalon;
+            }
+        }
         public ISaloonDetailsRepository Saloon
         {
             get

@@ -29,6 +29,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SaloonViewModule } from "./pages/saloon/saloon-view/saloon.view.module";
 import { DialogModule } from "./dialog/dialog.module";
 import { SaloonDetailsModule } from "./pages/saloon/saloon-details/saloon.details.module";
+import { EnrolledSalonDetailsModule } from './pages/enrolledsalon/enrolledsalon-details/enrolledsalon.details.module';
+import { EnrolledSalonViewModule } from './pages/enrolledsalon/enrolledsalon-view/enrolledsalon.view.module';
+import { AddressDetailsModule } from './pages/address/address-details/address.details.module';
+import { AddressViewModule } from './pages/address/address-view/address.view.module';
+import { CustomerDetailsModule } from './pages/Customer/customer-details/customer.details.module';
+import { CustomerViewModule } from './pages/Customer/customer-view/customer.view.module';
+import { StaffDetailsModule } from './pages/staff/staff-details/staff.details.module';
+import { StaffViewModule } from './pages/staff/staff-view/staff.view.module';
 
 
 @NgModule({  
@@ -42,7 +50,15 @@ import { SaloonDetailsModule } from "./pages/saloon/saloon-details/saloon.detail
         routing,
         SaloonViewModule,
         DialogModule,
-        SaloonDetailsModule
+        SaloonDetailsModule,
+        EnrolledSalonDetailsModule,
+        EnrolledSalonViewModule,
+        AddressDetailsModule,
+        AddressViewModule,
+        CustomerDetailsModule,
+        CustomerViewModule,
+        StaffDetailsModule,
+        StaffViewModule
   ],
   declarations: [
     AppComponent,

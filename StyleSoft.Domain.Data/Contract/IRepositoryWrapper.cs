@@ -8,5 +8,9 @@ namespace StyleSoft.Domain.Data.Contract
     public interface IRepositoryWrapper
     {
         ISaloonDetailsRepository Saloon { get; }
+        IEnrolledSalonDetailsRepository EnrolledSalon { get; }
+        IAddressDetailsRepository Address { get; }
+        ICustomerDetailsRepository Customer { get; }
+        IStaffDetailsRepository Staff { get; }
     }
 }

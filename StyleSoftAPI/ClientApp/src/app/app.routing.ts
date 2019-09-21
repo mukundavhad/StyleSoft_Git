@@ -4,8 +4,11 @@ import { PagesComponent } from './pages/pages.component';
 import { BlankComponent } from './pages/blank/blank.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
-import { SaloonDetailsComponent } from './pages/saloon/saloon-details/saloon-details.component';
 import { SaloonViewComponent } from './pages/saloon/saloon-view/saloon-view.component';
+import { EnrolledSalonViewComponent } from './pages/enrolledsalon/enrolledsalon-view/enrolledsalon-view.component';
+import { AddressViewComponent } from './pages/address/address-view/address-view.component';
+import { CustomerViewComponent } from './pages/Customer/customer-view/customer-view.component';
+import { StaffViewComponent } from './pages/staff/staff-view/staff-view.component';
 
 export const routes: Routes = [
     {
@@ -13,12 +16,12 @@ export const routes: Routes = [
         component: PagesComponent,
         children: [
             { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } },
-           // { path: 'saloonview', loadChildren: './pages/saloon/saloon-view/saloon.view.module#SaloonViewModule', data: { breadcrumb: 'Saloon View' } },
-            { path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon View' } },
-
+            { path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon Details' } },
+            { path: 'addressview', component: AddressViewComponent, data: { breadcrumb: 'Address Details' } },
+            { path: 'enrolledsalonview', component: EnrolledSalonViewComponent, data: { breadcrumb: 'Enrolled Saloon' } },
+            { path: 'customerview', component: CustomerViewComponent, data: { breadcrumb: 'Customer Details' } },
+            { path: 'staffview', component: StaffViewComponent, data: { breadcrumb: 'Staff Details' } },
             { path: 'blank', component: BlankComponent, data: { breadcrumb: 'Blank page' } },
-            //{ path: 'saloon', component: SaloonDetailsComponent, data: { breadcrumb: 'Saloon Details' } },
-            //{ path: 'saloonview', component: SaloonViewComponent, data: { breadcrumb: 'Saloon View Details' } },
             { path: 'search', component: SearchComponent, data: { breadcrumb: 'Search' } }
         ]
     },

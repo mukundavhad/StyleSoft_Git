@@ -42,7 +42,7 @@ namespace StyleSoft.Domain.Data.Models
         {
             modelBuilder.Entity<Address>(entity =>
             {
-                entity.HasKey(e => e.PkId);
+                entity.HasKey(e => e.AddressId);
 
                 entity.Property(e => e.Address1)
                     .HasMaxLength(100)
@@ -141,7 +141,7 @@ namespace StyleSoft.Domain.Data.Models
 
             modelBuilder.Entity<EnrolledSalon>(entity =>
             {
-                entity.HasKey(e => e.PkId);
+                entity.HasKey(e => e.EnrolledSalonId);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
@@ -187,7 +187,7 @@ namespace StyleSoft.Domain.Data.Models
 
             modelBuilder.Entity<SalonLocation>(entity =>
             {
-                entity.HasKey(e => e.PkId);
+                entity.HasKey(e => e.ShopLocationId);
 
                 entity.Property(e => e.City)
                     .HasMaxLength(20)
@@ -200,10 +200,6 @@ namespace StyleSoft.Domain.Data.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.PinCode)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SalonOwnerMobile)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 

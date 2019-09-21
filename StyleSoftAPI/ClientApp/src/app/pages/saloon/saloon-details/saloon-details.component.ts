@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SaloonDetailsService } from '../saloon-view/saloondetails.service';
 import { APP_CONSTANT } from '../../../../config';
+import { DialogRef } from '../../../dialog/dialog-ref';
 
 @Component({
   selector: 'app-saloon-details',
@@ -15,16 +16,18 @@ export class SaloonDetailsComponent implements OnInit   {
     public saloonForm: FormGroup;
     public isEditable: boolean = false;
 
-    constructor(private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private saloondetailsservice: SaloonDetailsService) {
+    constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private saloondetailsservice: SaloonDetailsService) {
       //this.router = router;
   }
 
     ngOnInit() {
 
         this.saloonForm = this.formBuilder.group({
-            PkId: [0],
+            ShopLocationId: [0],
             ShopName: [],
             ShopAddress1: [],
+            ShopAddress2: [],
+            EnrolledSalonId:[0],
             Locality: [],
             City: [],
             State: [],
@@ -43,10 +46,10 @@ export class SaloonDetailsComponent implements OnInit   {
          this.http.post(this.isEditable ? APP_CONSTANT.SALOONDETAILS.EDIT : APP_CONSTANT.SALOONDETAILS.ADD, saloondetails, httpOptions)
             .subscribe((saloondetails) => {
                 // login successful if there's a jwt token in the response
-                //if (product1) {
+                if (saloondetails) {
                 //    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                //    this.dialog.close(product1);
-                //}
+                    this.dialog.close(saloondetails);
+                }
                 //return product1;
             });
     }

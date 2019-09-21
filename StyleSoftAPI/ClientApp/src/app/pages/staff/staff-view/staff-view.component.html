@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <!--<button class="btn btn-outline-primary" (click)="exportAsXLSX()"><i class="fa fa-plus-circle"></i>&nbsp;Export To Excel </button>-->
+            <div class="col-md-1"></div>
+            <button type="button" class="btn btn-outline-primary" (click)="redirectToAddNew()"><i class="fa fa-plus-circle"></i>&nbsp; Add New </button>
+        </div>
+    </div>
+</div>
+
+<ejs-grid [dataSource]='rowData' >
+    <e-columns >
+        <e-column field='StaffId' headerText='Sr. No.' width='80'></e-column>
+        <e-column field='SalonOwnerMobile' headerText=' Owner Mobile' width='160'></e-column>
+        <e-column field='ShopLocationId' headerText='Shop Location' width='160'></e-column>
+        <e-column field='StaffName' headerText='Staff Name' width='160'></e-column>
+        <e-column field='StaffMobileNumber' headerText='Staff Mobile' width='120'></e-column>
+    </e-columns>
+</ejs-grid>

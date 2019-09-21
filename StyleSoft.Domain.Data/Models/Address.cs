@@ -5,7 +5,7 @@ namespace StyleSoft.Domain.Data.Models
 {
     public partial class Address
     {
-        public int PkId { get; set; }
+        public int AddressId { get; set; }
         public string Mobile { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }

@@ -7,7 +7,7 @@
         <div>
             <form [formGroup]="saloonForm" (ngSubmit)="onSubmit(saloonForm.value)">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-8">
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Shop Name :</strong></label>
@@ -15,10 +15,25 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="textarea-input"><strong>Address :</strong></label>
+                                <label for="textarea-input"><strong>Locality :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="Locality" type="text" pInputText id="locality" name="locality" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Shop Address1 :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
                                         <input formControlName="ShopAddress1" appValidationBorder type="text" pInputText id="shopaddress1" name="shopaddress1" class="form-control">
@@ -27,13 +42,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="textarea-input"><strong>Locality :</strong></label>
+                                <label for="textarea-input"><strong>Shop Address2 :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
-                                        <input formControlName="Locality" type="text" pInputText id="locality" name="locality" class="form-control">
+                                        <input formControlName="ShopAddress2" appValidationBorder type="text" pInputText id="shopaddress2" name="shopaddress2" class="form-control">
                                     </span>
                                 </div>
                             </div>

@@ -1,0 +1,83 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Staff Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="staffForm" (ngSubmit)="onSubmit(staffForm.value)">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Salon Owner Mobile :</strong></label>
+                                <input formControlName="SalonOwnerMobile" appValidationBorder type="text" pInputText id="salonownermobile" name="salonownermobile" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Shop Location:</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="ShopLocationId" appValidationBorder type="text" pInputText id="shoplocationid" name="shoplocationid" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Staff Name :</strong></label>
+                                <input formControlName="StaffName" appValidationBorder type="text" pInputText id="staffname" name="staffname" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Staff Mobile No :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="StaffMobileNumber" appValidationBorder type="text" pInputText id="staffmobilenumber" name="staffmobilenumber" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Commission(%) :</strong></label>
+                                <input formControlName="CommissionPercentage" appValidationBorder type="text" pInputText id="commissionpercentage" name="commissionpercentage" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>CurrentlyWorking(Y/N):</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="CurrentlyWorkingInd" appValidationBorder type="text" pInputText id="currentlyworkingind" name="currentlyworkingind" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

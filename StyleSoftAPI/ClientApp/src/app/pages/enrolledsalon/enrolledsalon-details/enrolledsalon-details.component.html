@@ -1,0 +1,49 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Enrolled Salon Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="enrolledsalonForm" (ngSubmit)="onSubmit(enrolledsalonForm.value)">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Salon Owner Mobile :</strong></label>
+                                <input formControlName="SalonOwnerMobile" appValidationBorder type="text" pInputText id="salonownermobile" name="salonownermobile" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Salon Owner Name:</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="SalonOwnerName" appValidationBorder type="text" pInputText id="salonownername" name="salonownername" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong> Email Id :</strong></label>
+                                <input formControlName="SalonOwnerEmailId" appValidationBorder type="text" pInputText id="salonowneremailid" name="salonowneremailid" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                     
+                </div>
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

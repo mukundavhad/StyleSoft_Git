@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <!--<button class="btn btn-outline-primary" (click)="exportAsXLSX()"><i class="fa fa-plus-circle"></i>&nbsp;Export To Excel </button>-->
+            <div class="col-md-1"></div>
+            <button type="button" class="btn btn-outline-primary" (click)="redirectToAddNew()"><i class="fa fa-plus-circle"></i>&nbsp; Add New </button>
+        </div>
+    </div>
+</div>
+
+<ejs-grid [dataSource]='rowData' [allowPaging]="true" [allowSorting]="true"
+          [allowFiltering]="true" [allowGrouping]="true" [pageSettings]='pageSettings'>
+    <e-columns>
+        <e-column field='AddressId' headerText='Sr. No.' width='80'></e-column>
+        <e-column field='Mobile' headerText='Mobile No' width='160'></e-column>
+        <e-column field='Locality' headerText='Locality' width='160'></e-column>
+        <e-column field='Address1' headerText='Address1' width='160'></e-column>
+        <e-column field='Address2' headerText='Address2' width='160'></e-column>
+        <e-column field='City' headerText='City' width='120'></e-column>
+        <e-column field='State' headerText='State' width='140'></e-column>
+        <e-column field='PinCode' headerText='Pin Code' width='120'></e-column>
+    </e-columns>
+</ejs-grid>
+ 
