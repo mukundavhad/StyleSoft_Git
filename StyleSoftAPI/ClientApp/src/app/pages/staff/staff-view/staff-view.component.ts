@@ -34,7 +34,7 @@ export class StaffViewComponent implements OnInit {
 
 
     redirectToAddNew() {
-        const ref = this.dialog.open(StaffDetailsComponent, { modalConfig: { title: 'Add/Edit Staff Details' }, isEditable: false });
+        const ref = this.dialog.open(StaffDetailsComponent, { modalConfig: { title: 'Add/Edit Staff Details', width: '65%', height: '80%' }, isEditable: false });
         ref.afterClosed.subscribe(result => {
             // this.rowData.push(result); //TODO this should be implemented like this
             this.RefreshGrid();

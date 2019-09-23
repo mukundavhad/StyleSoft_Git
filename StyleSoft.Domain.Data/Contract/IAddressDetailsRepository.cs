@@ -7,7 +7,7 @@ namespace StyleSoft.Domain.Data.Contract
        public interface IAddressDetailsRepository : IRepositoryBase<Address>
     {
         bool Authenticate();
-        //IEnumerable<SalonLocation> SearchSaloonDetails(string searchString);
+        IEnumerable<Address> SearchAddress(string searchString);
 
         //IEnumerable<SalonLocation> GetAllSaloonDetails();
     }

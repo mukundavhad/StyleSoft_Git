@@ -249,7 +249,7 @@ namespace StyleSoft.Domain.Data.Models
 
             modelBuilder.Entity<StaffDetails>(entity =>
             {
-                entity.HasKey(e => e.SrNo);
+                entity.HasKey(e => e.StaffId);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 

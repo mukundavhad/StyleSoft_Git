@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffDetailsComponent } from './staff-details.component';
+import { AutoCompleteAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 export const routes = [
     { path: '', component: StaffDetailsComponent, pathMatch: 'full' }
@@ -10,7 +11,8 @@ export const routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+        CommonModule,
+      AutoCompleteAllModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)

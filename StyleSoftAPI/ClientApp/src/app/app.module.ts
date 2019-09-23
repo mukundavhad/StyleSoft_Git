@@ -12,6 +12,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { AppSettings } from './app.settings';
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { HeaderComponent } from './theme/components/header/header.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
 import { SidebarComponent } from './theme/components/sidebar/sidebar.component';
@@ -42,6 +43,7 @@ import { StaffViewModule } from './pages/staff/staff-view/staff.view.module';
 @NgModule({  
     imports: [
         CommonModule,
+        AutoCompleteModule,
         FormsModule,
         ReactiveFormsModule,
         BrowserModule,

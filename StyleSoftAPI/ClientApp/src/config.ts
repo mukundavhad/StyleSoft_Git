@@ -28,7 +28,7 @@ export const APP_CONSTANT={
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'AddressDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
-        //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
+        SEARCH_ADDRESSDETAILS: API_URL + 'AddressDetails/SearchAddress',
     },
     CUSTOMERDETAILS: {
         ADD: API_URL + 'CustomerDetails/Add',

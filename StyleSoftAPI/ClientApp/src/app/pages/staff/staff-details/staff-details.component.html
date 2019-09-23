@@ -51,7 +51,17 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Address :</strong></label>
+                                <ejs-autocomplete id='atcelement' formControlName="Address" [dataSource]="addressList" (actionComplete)="searchAddress($event)"
+                                                  [placeholder]='text' field="Address1"></ejs-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card-block">
