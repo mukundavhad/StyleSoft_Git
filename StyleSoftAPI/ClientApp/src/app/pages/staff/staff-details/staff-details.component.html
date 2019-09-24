@@ -18,12 +18,9 @@
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="textarea-input"><strong>Shop Location:</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <input formControlName="ShopLocationId" appValidationBorder type="text" pInputText id="shoplocationid" name="shoplocationid" class="form-control">
-                                    </span>
-                                </div>
+                                <label for="select"><strong>Shop Location :</strong></label>
+                                <ejs-autocomplete id='atcelement' formControlName="ShopLocation" [dataSource]="shoplocationList" (actionComplete)="searchShopLocation($event)"
+                                                  [placeholder]='text1' field="ShopName"></ejs-autocomplete>
                             </div>
                         </div>
                     </div>

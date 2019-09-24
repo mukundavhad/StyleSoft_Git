@@ -10,6 +10,7 @@ export const verticalMenuItems = [
     new Menu(65, 'Address Details', '/addressview', null, 'file-o', null, false, 0),
     new Menu(65, 'Customer Details', '/customerview', null, 'file-o', null, false, 0),
     new Menu(65, 'Staff Details', '/staffview', null, 'file-o', null, false, 0),
+    new Menu(65, 'Service Category', '/servicecategoryview', null, 'file-o', null, false, 0),
     new Menu (45, 'Blank', '/blank', null, 'file-o', null, false, 40),
     new Menu (46, 'Error', '/pagenotfound', null, 'exclamation-circle', null, false, 40),   
     new Menu (140, 'Level 1', null, null, 'folder-open-o', null, true, 0),
@@ -30,6 +31,7 @@ export const horizontalMenuItems = [
     new Menu(65, 'Address Details', '/addressview', null, 'file-o', null, false, 0),
     new Menu(65, 'Customer Details', '/customerview', null, 'file-o', null, false, 0),
     new Menu(65, 'Staff Details', '/staffview', null, 'file-o', null, false, 0),
+    new Menu(65, 'Service Category', '/servicecategoryview', null, 'file-o', null, false, 0),
     new Menu (45, 'Blank', '/blank', null, 'file-o', null, false, 40),
     new Menu (46, 'Error', '/pagenotfound', null, 'exclamation-circle', null, false, 40),
     new Menu (200, 'External Link', null, 'http://themeseason.com', 'external-link', '_blank', false, 0)

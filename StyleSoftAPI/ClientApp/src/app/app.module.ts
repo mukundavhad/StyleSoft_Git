@@ -38,6 +38,8 @@ import { CustomerDetailsModule } from './pages/Customer/customer-details/custome
 import { CustomerViewModule } from './pages/Customer/customer-view/customer.view.module';
 import { StaffDetailsModule } from './pages/staff/staff-details/staff.details.module';
 import { StaffViewModule } from './pages/staff/staff-view/staff.view.module';
+import { ServiceCategoryDetailsModule } from './pages/servicecategory/servicecategory-details/servicecategory.details.module';
+import { ServiceCategoryViewModule } from './pages/servicecategory/servicecategory-view/servicecategory.view.module';
 
 
 @NgModule({  
@@ -60,7 +62,9 @@ import { StaffViewModule } from './pages/staff/staff-view/staff.view.module';
         CustomerDetailsModule,
         CustomerViewModule,
         StaffDetailsModule,
-        StaffViewModule
+        StaffViewModule,
+        ServiceCategoryDetailsModule,
+        ServiceCategoryViewModule
   ],
   declarations: [
     AppComponent,

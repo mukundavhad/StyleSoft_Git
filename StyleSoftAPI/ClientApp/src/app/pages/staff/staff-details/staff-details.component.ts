@@ -6,6 +6,7 @@ import { APP_CONSTANT } from '../../../../config';
 import { StaffDetailsService } from '../staff-view/staffdetails.service';
 import { DialogRef } from '../../../dialog/dialog-ref';
 import { AddressDetailsService } from '../../address/address-view/addressdetails.service';
+import { SaloonDetailsService } from '../../saloon/saloon-view/saloondetails.service';
 
 @Component({
   selector: 'app-staff-details',
@@ -15,23 +16,25 @@ import { AddressDetailsService } from '../../address/address-view/addressdetails
 })
 export class StaffDetailsComponent implements OnInit   {
     public addressList: [];
+    public shoplocationList: []; 
     public staffForm: FormGroup;
     public isEditable: boolean = false;
+    public text1: string = "Find Shop Name"; 
     public text: string = "Find Address";
 
-    constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private addressdetailsservice: AddressDetailsService,private staffdetailsservice: StaffDetailsService) {
+    constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private saloondetailsService: SaloonDetailsService,private addressdetailsservice: AddressDetailsService,private staffdetailsservice: StaffDetailsService) {
       //this.router = router;
   }
 
     ngOnInit() {
-
         this.staffForm = this.formBuilder.group({
             StaffId: [0],
             EnrolledSalonId: [1],
             Address: [{}],
+            ShopLocation: [{}],
             AddressId:[],
             SalonOwnerMobile: [],
-            ShopLocationId: [1],
+            ShopLocationId: [],
             StaffMobileNumber: [],
             StaffName: [],
             CurrentlyWorkingInd: [],
@@ -45,6 +48,12 @@ export class StaffDetailsComponent implements OnInit   {
         });
     }
 
+    searchShopLocation(event) {
+        this.saloondetailsService.searchShopLocation(event.query).subscribe((data: any) => {
+            this.shoplocationList = data;
+        });
+    }
+
     public onSubmit(values: Object): void {
         let httpOptions = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -52,7 +61,11 @@ export class StaffDetailsComponent implements OnInit   {
 
         let staffdetails = this.staffForm.value;
         staffdetails.AddressId = staffdetails.Address.AddressId;
+        staffdetails.ShopLocationId = staffdetails.ShopLocation.ShopLocationId;
+
         delete staffdetails.Address;
+        delete staffdetails.ShopLocation;
+
          this.http.post(this.isEditable ? APP_CONSTANT.STAFFDETAILS.EDIT : APP_CONSTANT.STAFFDETAILS.ADD, staffdetails, httpOptions)
              .subscribe((staffdetails) => {
                 // login successful if there's a jwt token in the response
@@ -63,7 +76,6 @@ export class StaffDetailsComponent implements OnInit   {
                  return staffdetails;
             });
     }
-   
 }
 
 

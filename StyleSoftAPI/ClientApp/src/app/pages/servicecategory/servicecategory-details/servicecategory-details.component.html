@@ -1,0 +1,25 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Service Category Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="servicecategoryForm" (ngSubmit)="onSubmit(servicecategoryForm.value)">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Category Name :</strong></label>
+                                <input formControlName="CategoryName" appValidationBorder type="text" pInputText id="categoryname" name="categoryname" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

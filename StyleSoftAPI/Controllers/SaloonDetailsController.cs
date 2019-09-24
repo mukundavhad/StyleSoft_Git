@@ -27,12 +27,14 @@ namespace StyleSoftAPI.Controllers
             var Salondetails = this._repoWrapper.Saloon.FindAll().ToList();
             return Salondetails;
         }
-        //[HttpPost("SearchCustomer")]
-        //public IEnumerable<TblCustomerMaster> SearchCustomer([FromBody]string searchString)
-        //{
-        //    var Cusotmer = this._repoWrapper.Customer.SearchCustomer(searchString).ToList();
-        //    return Cusotmer;
-        //}
+
+        [HttpPost("SearchShopLocation")]
+        public IEnumerable<SalonLocation> SearchShopLocation([FromBody] string searchString)
+        {
+            var SalonLocation = this._repoWrapper.Saloon.SearchShopLocation(searchString).ToList();
+            return SalonLocation;
+        }
+
         //[HttpPost("GetByID")] 
         //public TblCustomerMaster GetByID([FromBody] int customerId)
         //{

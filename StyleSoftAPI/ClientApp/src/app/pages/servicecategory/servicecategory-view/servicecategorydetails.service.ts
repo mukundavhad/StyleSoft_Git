@@ -7,16 +7,16 @@ import { APP_CONSTANT } from '../../../../config';
 @Injectable({
 providedIn :'root'
 })
-export class SaloonDetailsService {
+export class ServiceCategoryDetailsService {
   constructor(private http: HttpClient) { }
 
-  loadSaloonDetails() {
-      return this.http.get(APP_CONSTANT.SALOONDETAILS.GETALL);
+  loadserviceCategoryDetails() {
+      return this.http.get(APP_CONSTANT.SERVICECATEGORYDETAILS.GETALL);
      
   }
-    searchShopLocation(searchString) {
-    return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION, JSON.stringify(searchString));
-  }
+  //searchCustomer(searchString) {
+  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.SEARCH_CUSTOMER, JSON.stringify(searchString));
+  //}
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

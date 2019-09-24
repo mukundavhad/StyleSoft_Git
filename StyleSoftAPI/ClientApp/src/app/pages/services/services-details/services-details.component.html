@@ -1,0 +1,117 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Services Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="servicesForm" (ngSubmit)="onSubmit(servicesForm.value)">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Owner Name :</strong></label>
+                                <ejs-autocomplete id='atcelement' formControlName="OwnerName" [dataSource]="ownernameList" (actionComplete)="searchOwnerName($event)"
+                                                  [placeholder]='text1' field="SalonOwnerName"></ejs-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Shop Location :</strong></label>
+                                <ejs-autocomplete id='atcelement' formControlName="ShopLocation" [dataSource]="shoplocationList" (actionComplete)="searchShopLocation($event)"
+                                                  [placeholder]='text1' field="ShopName"></ejs-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Service Category :</strong></label>
+                                <ejs-autocomplete id='atcelement' formControlName="CategoryName" [dataSource]="categorynameList" (actionComplete)="searchCategoryName($event)"
+                                                  [placeholder]='text1' field="CategoryName"></ejs-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Service Name :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="ServiceName" appValidationBorder type="text" pInputText id="servicename" name="servicename" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Service Description :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="ServiceDescription" appValidationBorder type="text" pInputText id="servicedescription" name="servicedescription" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Service Cost :</strong></label>
+                                <input formControlName="ServiceCost" appValidationBorder type="text" pInputText id="servicecost" name="servicecost" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Service Duration :</strong></label>
+                                <input formControlName="ServiceDuration" appValidationBorder type="text" pInputText id="serviceduration" name="serviceduration" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Gender :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="Gender" appValidationBorder type="text" pInputText id="gender" name="gender" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Commission Percentage :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="CommissionPercentage" appValidationBorder type="text" pInputText id="commissionpercentage" name="commissionpercentage" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

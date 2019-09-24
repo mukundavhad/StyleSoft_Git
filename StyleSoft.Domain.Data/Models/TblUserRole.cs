@@ -13,6 +13,8 @@ namespace StyleSoft.Domain.Data.Models
 
         public int RoleId { get; set; }
         public string RoleName { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
         public ICollection<TblUserInfo> TblUserInfo { get; set; }
         public ICollection<TblUserRolePermission> TblUserRolePermission { get; set; }

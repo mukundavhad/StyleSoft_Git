@@ -7,7 +7,7 @@ import { APP_CONSTANT } from '../../../../config';
 @Injectable({
 providedIn :'root'
 })
-export class SaloonDetailsService {
+export class ServicesDetailsService {
   constructor(private http: HttpClient) { }
 
   loadSaloonDetails() {

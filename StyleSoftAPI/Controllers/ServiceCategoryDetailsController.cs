@@ -9,32 +9,29 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
-    [Route("api/AddressDetails/")]
-    public class AddressDetailsController : Controller
+    [Route("api/ServiceCategoryDetails/")]
+    public class ServiceCategoryDetailsController : Controller
     {
-
         private IRepositoryWrapper _repoWrapper;
 
-        public AddressDetailsController(IRepositoryWrapper repoWrapper)
+        public ServiceCategoryDetailsController(IRepositoryWrapper repoWrapper)
         {
             _repoWrapper = repoWrapper;
         }
 
 
         [HttpGet("[action]")]
-        public IEnumerable<Address> GetAll()
+        public IEnumerable<ServiceCategory> GetAll()
         {
-            var Addressdetails = this._repoWrapper.Address.FindAll().ToList();
-            return Addressdetails;
+            var ServiceCategorydetails = this._repoWrapper.ServiceCategory.FindAll().ToList();
+            return ServiceCategorydetails;
         }
-
-        [HttpPost("SearchAddress")]
-        public IEnumerable<Address> SearchAddress([FromBody] string searchString)
-        {
-            var Adddress = this._repoWrapper.Address.SearchAddress(searchString).ToList();
-            return Adddress;
-        }
-
+        //[HttpPost("SearchCustomer")]
+        //public IEnumerable<TblCustomerMaster> SearchCustomer([FromBody]string searchString)
+        //{
+        //    var Cusotmer = this._repoWrapper.Customer.SearchCustomer(searchString).ToList();
+        //    return Cusotmer;
+        //}
         //[HttpPost("GetByID")] 
         //public TblCustomerMaster GetByID([FromBody] int customerId)
         //{
@@ -42,12 +39,12 @@ namespace StyleSoftAPI.Controllers
         //    return Cusotmer;
         //}
         [HttpPost("Add")]
-        public bool Add([FromBody] Address address)
+        public bool Add([FromBody] ServiceCategory servicecategory)
         {
             try
             {
-                this._repoWrapper.Address.Create(address);
-                this._repoWrapper.Address.Save();
+                this._repoWrapper.ServiceCategory.Create(servicecategory);
+                this._repoWrapper.ServiceCategory.Save();
                 return true;
             }
 
@@ -57,12 +54,12 @@ namespace StyleSoftAPI.Controllers
             }
         }
         [HttpPost("Update")]
-        public bool Update([FromBody] Address address)
+        public bool Update([FromBody] ServiceCategory servicecategory)
         {
             try
             {
-                this._repoWrapper.Address.Update(address);
-                this._repoWrapper.Address.Save();
+                this._repoWrapper.ServiceCategory.Update(servicecategory);
+                this._repoWrapper.ServiceCategory.Save();
                 return true;
             }
 
@@ -85,11 +82,6 @@ namespace StyleSoftAPI.Controllers
         //    {
         //        return false;
         //    }
-
-
         //}
-
-
-
     }
 }

@@ -11,13 +11,22 @@ export const APP_CONSTANT={
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'SaloonDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
-        //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
+        SEARCH_SHOPLOCATION: API_URL + 'SaloonDetails/SearchShopLocation',
     },
     ENROLLEDSALONDETAILS: {
         ADD: API_URL + 'EnrolledSalonDetails/Add',
         GETALL: API_URL + 'EnrolledSalonDetails/GetAll',
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'EnrolledSalonDetails/Update',
+        //DELETE: API_URL + 'Customer/Delete',
+        //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
+    },
+
+    SERVICECATEGORYDETAILS: {
+        ADD: API_URL + 'ServiceCategoryDetails/Add',
+        GETALL: API_URL + 'ServiceCategoryDetails/GetAll',
+        //GETByID: API_URL + 'Customer/GetByID',
+        EDIT: API_URL + 'ServiceCategoryDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
         //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
     },

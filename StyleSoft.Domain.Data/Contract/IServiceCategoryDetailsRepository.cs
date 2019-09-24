@@ -4,10 +4,10 @@ using System.Text;
 using StyleSoft.Domain.Data.Models;
 namespace StyleSoft.Domain.Data.Contract
 {
-       public interface ISaloonDetailsRepository : IRepositoryBase<SalonLocation>
+       public interface IServiceCategoryDetailsRepository : IRepositoryBase<ServiceCategory>
     {
         bool Authenticate();
-        IEnumerable<SalonLocation> SearchShopLocation(string searchString);
+        //IEnumerable<SalonLocation> SearchSaloonDetails(string searchString);
 
         //IEnumerable<SalonLocation> GetAllSaloonDetails();
     }

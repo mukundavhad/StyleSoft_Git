@@ -12,20 +12,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StyleSoft.Domain.Data.Repositories
 {
-    public class SaloonDetailsRepository : RepositoryBase<SalonLocation>, ISaloonDetailsRepository
+    public class ServiceCategoryDetailsRepository : RepositoryBase<ServiceCategory>, IServiceCategoryDetailsRepository
     {
         private StylesoftContext ktConContext;
-        public SaloonDetailsRepository(StylesoftContext ktConContext) : base(ktConContext) {
+        public ServiceCategoryDetailsRepository(StylesoftContext ktConContext) : base(ktConContext) {
             this.ktConContext = ktConContext;
         }
 
-        public IEnumerable<SalonLocation> SearchShopLocation(string searchString)
-        {
-            if (string.IsNullOrEmpty(searchString))
-            { return this.ktConContext.Set<SalonLocation>(); }
+        //public IEnumerable<TblCustomerMaster> SearchCustomer(string searchString)
+        //{
+        //    if(string.IsNullOrEmpty(searchString))
+        //    { return this.ktConContext.Set<TblCustomerMaster>(); }
 
-            return this.ktConContext.Set<SalonLocation>().Where(shopname => shopname.ShopName.ToLower().Contains(searchString.ToLower()));
-        }
+        //   return this.ktConContext.Set<TblCustomerMaster>().Where(customer => customer.CustmerName.ToLower().Contains(searchString.ToLower()));
+        //}
 
         //public IEnumerable<TblCustomerMaster> GetAllCustomer()
         //{
@@ -36,7 +36,7 @@ namespace StyleSoft.Domain.Data.Repositories
         //    return TblCustomerMasters;
         //}
 
-        bool ISaloonDetailsRepository.Authenticate()
+        bool IServiceCategoryDetailsRepository.Authenticate()
         {
             return true;
         }
