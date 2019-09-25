@@ -10,9 +10,8 @@ providedIn :'root'
 export class ServicesDetailsService {
   constructor(private http: HttpClient) { }
 
-  loadSaloonDetails() {
-      return this.http.get(APP_CONSTANT.SALOONDETAILS.GETALL);
-     
+  loadServicesDetails() {
+      return this.http.get(APP_CONSTANT.SERVICESDETAILS.GETALL);
   }
     searchShopLocation(searchString) {
     return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION, JSON.stringify(searchString));

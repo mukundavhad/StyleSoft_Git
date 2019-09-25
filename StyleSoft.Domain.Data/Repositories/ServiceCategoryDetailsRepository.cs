@@ -19,13 +19,13 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
-        //public IEnumerable<TblCustomerMaster> SearchCustomer(string searchString)
-        //{
-        //    if(string.IsNullOrEmpty(searchString))
-        //    { return this.ktConContext.Set<TblCustomerMaster>(); }
+        public IEnumerable<ServiceCategory> SearchServiceCategoryName(string searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+            { return this.ktConContext.Set<ServiceCategory>(); }
 
-        //   return this.ktConContext.Set<TblCustomerMaster>().Where(customer => customer.CustmerName.ToLower().Contains(searchString.ToLower()));
-        //}
+            return this.ktConContext.Set<ServiceCategory>().Where(servicecategory => servicecategory.CategoryName.ToLower().Contains(searchString.ToLower()));
+        }
 
         //public IEnumerable<TblCustomerMaster> GetAllCustomer()
         //{

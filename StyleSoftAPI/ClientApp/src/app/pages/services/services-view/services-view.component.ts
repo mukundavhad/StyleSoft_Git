@@ -26,9 +26,9 @@ export class ServicesViewComponent implements OnInit {
 
     ngOnInit() {
 
-        this.servicesdetailsservice.loadSaloonDetails()
-            .subscribe((saloon: any) => {
-                this.rowData = saloon;
+        this.servicesdetailsservice.loadServicesDetails()
+            .subscribe((services: any) => {
+                this.rowData = services;
             });
 
         this.pageSettings = { pageSize: 6 };
@@ -36,7 +36,7 @@ export class ServicesViewComponent implements OnInit {
 
 
     redirectToAddNew() {
-        const ref = this.dialog.open(ServicesDetailsComponent, { data: {}, modalConfig: { title: 'Add/Edit Services Details', width: '65%',height:'80%' }, isEditable: true });
+        const ref = this.dialog.open(ServicesDetailsComponent, { data: {}, modalConfig: { title: 'Add/Edit Services Details', width: '80%',height:'80%' }, isEditable: true });
         ref.afterClosed.subscribe(result => {
             this.RefreshGrid();
         });
@@ -44,9 +44,9 @@ export class ServicesViewComponent implements OnInit {
 
     RefreshGrid = () => {
 
-        this.servicesdetailsservice.loadSaloonDetails()
-            .subscribe((saloon: any) => {
-                this.rowData = saloon;
+        this.servicesdetailsservice.loadServicesDetails()
+            .subscribe((services: any) => {
+                this.rowData = services;
             });
         this.pageSettings = { pageSize: 6 };
     }

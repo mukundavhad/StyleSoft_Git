@@ -8,7 +8,6 @@ namespace StyleSoft.Domain.Data.Models
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string CustomerMobile { get; set; }
-        public int AddressId { get; set; }
         public string RelationType { get; set; }
         public string Gender { get; set; }
         public DateTime? DateofBirth { get; set; }

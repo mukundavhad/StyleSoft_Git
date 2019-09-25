@@ -12,7 +12,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { AppSettings } from './app.settings';
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
-import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { HeaderComponent } from './theme/components/header/header.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
 import { SidebarComponent } from './theme/components/sidebar/sidebar.component';
@@ -40,12 +39,13 @@ import { StaffDetailsModule } from './pages/staff/staff-details/staff.details.mo
 import { StaffViewModule } from './pages/staff/staff-view/staff.view.module';
 import { ServiceCategoryDetailsModule } from './pages/servicecategory/servicecategory-details/servicecategory.details.module';
 import { ServiceCategoryViewModule } from './pages/servicecategory/servicecategory-view/servicecategory.view.module';
+import { ServicesDetailsModule } from './pages/services/services-details/services.details.module';
+import { ServicesViewModule } from './pages/services/services-view/services.view.module';
 
 
 @NgModule({  
     imports: [
         CommonModule,
-        AutoCompleteModule,
         FormsModule,
         ReactiveFormsModule,
         BrowserModule,
@@ -64,7 +64,9 @@ import { ServiceCategoryViewModule } from './pages/servicecategory/servicecatego
         StaffDetailsModule,
         StaffViewModule,
         ServiceCategoryDetailsModule,
-        ServiceCategoryViewModule
+        ServiceCategoryViewModule,
+        ServicesDetailsModule,
+        ServicesViewModule
   ],
   declarations: [
     AppComponent,
@@ -81,7 +83,8 @@ import { ServiceCategoryViewModule } from './pages/servicecategory/servicecatego
     SearchComponent,    
     NotFoundComponent,
 
-  ],
+    ],
+    
   providers: [ 
     AppSettings,
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }

@@ -27,12 +27,14 @@ namespace StyleSoftAPI.Controllers
             var EnrolledSalondetails = this._repoWrapper.EnrolledSalon.FindAll().ToList();
             return EnrolledSalondetails;
         }
-        //[HttpPost("SearchCustomer")]
-        //public IEnumerable<TblCustomerMaster> SearchCustomer([FromBody]string searchString)
-        //{
-        //    var Cusotmer = this._repoWrapper.Customer.SearchCustomer(searchString).ToList();
-        //    return Cusotmer;
-        //}
+
+        [HttpPost("SearchOwnerName")]
+        public IEnumerable<EnrolledSalon> SearchOwnerName([FromBody]string searchString)
+        {
+            var EnrolledSalon1 = this._repoWrapper.EnrolledSalon.SearchOwnerName(searchString).ToList();
+            return EnrolledSalon1;
+        }
+
         //[HttpPost("GetByID")] 
         //public TblCustomerMaster GetByID([FromBody] int customerId)
         //{

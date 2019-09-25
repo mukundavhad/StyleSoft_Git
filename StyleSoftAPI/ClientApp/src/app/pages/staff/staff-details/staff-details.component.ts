@@ -19,8 +19,6 @@ export class StaffDetailsComponent implements OnInit   {
     public shoplocationList: []; 
     public staffForm: FormGroup;
     public isEditable: boolean = false;
-    public text1: string = "Find Shop Name"; 
-    public text: string = "Find Address";
 
     constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private saloondetailsService: SaloonDetailsService,private addressdetailsservice: AddressDetailsService,private staffdetailsservice: StaffDetailsService) {
       //this.router = router;

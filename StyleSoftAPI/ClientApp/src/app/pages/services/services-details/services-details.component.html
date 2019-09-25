@@ -11,8 +11,8 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Owner Name :</strong></label>
-                                <ejs-autocomplete id='atcelement' formControlName="OwnerName" [dataSource]="ownernameList" (actionComplete)="searchOwnerName($event)"
-                                                  [placeholder]='text1' field="SalonOwnerName"></ejs-autocomplete>
+                                <p-autoComplete formControlName="OwnerName" [suggestions]="ownernameList" (completeMethod)="searchOwnerName($event)"
+                                                 [dropdown]="true" [forceSelection]="true" field="SalonOwnerName"></p-autoComplete>
                             </div>
                         </div>
                     </div>
@@ -20,8 +20,8 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Shop Location :</strong></label>
-                                <ejs-autocomplete id='atcelement' formControlName="ShopLocation" [dataSource]="shoplocationList" (actionComplete)="searchShopLocation($event)"
-                                                  [placeholder]='text1' field="ShopName"></ejs-autocomplete>
+                                <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
+                                                [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
                             </div>
                         </div>
                     </div>
@@ -32,8 +32,8 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Service Category :</strong></label>
-                                <ejs-autocomplete id='atcelement' formControlName="CategoryName" [dataSource]="categorynameList" (actionComplete)="searchCategoryName($event)"
-                                                  [placeholder]='text1' field="CategoryName"></ejs-autocomplete>
+                                <p-autoComplete formControlName="CategoryName" [suggestions]="categorynameList" (completeMethod)="searchCategoryName($event)"
+                                                [dropdown]="true" [forceSelection]="true" field="CategoryName"></p-autoComplete>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,11 @@
                                 <label for="textarea-input"><strong>Gender :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
-                                        <input formControlName="Gender" appValidationBorder type="text" pInputText id="gender" name="gender" class="form-control">
+                                        <select formControlName="Gender" appValidationBorder id="select" name="select" class="form-control">
+                                            <option value="Please select">Please select</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
                                     </span>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffDetailsComponent } from './staff-details.component';
-import { AutoCompleteAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 export const routes = [
     { path: '', component: StaffDetailsComponent, pathMatch: 'full' }
@@ -12,8 +12,8 @@ export const routes = [
 @NgModule({
   imports: [
         CommonModule,
-      AutoCompleteAllModule,
-    FormsModule,
+        FormsModule,
+        AutoCompleteModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],

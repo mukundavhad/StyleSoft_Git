@@ -9,67 +9,60 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
-    [Route("api/ServiceCategoryDetails/")]
-    public class ServiceCategoryDetailsController : Controller
+    [Route("api/ServicesDetails/")]
+    public class ServicesDetailsController : Controller
     {
         private IRepositoryWrapper _repoWrapper;
 
-        public ServiceCategoryDetailsController(IRepositoryWrapper repoWrapper)
+        public ServicesDetailsController(IRepositoryWrapper repoWrapper)
         {
             _repoWrapper = repoWrapper;
         }
 
-
         [HttpGet("[action]")]
-        public IEnumerable<ServiceCategory> GetAll()
+        public IEnumerable<Services> GetAll()
         {
-            var ServiceCategorydetails = this._repoWrapper.ServiceCategory.FindAll().ToList();
-            return ServiceCategorydetails;
+            var servicesdetails = this._repoWrapper.Services.GetAllServicesDetails().ToList();
+            return servicesdetails;
         }
-
-        [HttpPost("SearchServicesCatogoryName")]
-        public IEnumerable<ServiceCategory> SearchServicesCatogoryName([FromBody]string searchString)
-        {
-            var ServiceCategory1 = this._repoWrapper.ServiceCategory.SearchServiceCategoryName(searchString).ToList();
-            return ServiceCategory1;
-        }
-
+         
         //[HttpPost("GetByID")] 
         //public TblCustomerMaster GetByID([FromBody] int customerId)
         //{
         //    var Cusotmer = this._repoWrapper.Customer.FindByCondition(x=> x.CustomerId == customerId).FirstOrDefault();
         //    return Cusotmer;
         //}
+
         [HttpPost("Add")]
-        public bool Add([FromBody] ServiceCategory servicecategory)
+        public bool Add([FromBody] Services services)
         {
             try
             {
-                this._repoWrapper.ServiceCategory.Create(servicecategory);
-                this._repoWrapper.ServiceCategory.Save();
+                this._repoWrapper.Services.Create(services);
+                this._repoWrapper.Services.Save();
                 return true;
             }
-
             catch (Exception e)
             {
                 return false;
             }
         }
+
         [HttpPost("Update")]
-        public bool Update([FromBody] ServiceCategory servicecategory)
+        public bool Update([FromBody] Services services)
         {
             try
             {
-                this._repoWrapper.ServiceCategory.Update(servicecategory);
-                this._repoWrapper.ServiceCategory.Save();
+                this._repoWrapper.Services.Update(services);
+                this._repoWrapper.Services.Save();
                 return true;
             }
-
             catch (Exception e)
             {
                 return false;
             }
         }
+
         //[HttpPost("Delete")]
         //public bool Delete([FromBody] TblCustomerMaster customer)
         //{

@@ -311,11 +311,11 @@ namespace StyleSoft.Domain.Data.Models
 
                 entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
-                entity.HasOne(d => d.EnrolledSalon)
-                    .WithMany(p => p.StaffDetails)
-                    .HasForeignKey(d => d.EnrolledSalonId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Staff_EnrolledSalon");
+                //entity.HasOne(d => d.EnrolledSalon)
+                //    .WithMany(p => p.StaffDetails)
+                //    .HasForeignKey(d => d.EnrolledSalonId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Staff_EnrolledSalon");
 
                 entity.HasOne(d => d.ShopLocation)
                     .WithMany(p => p.StaffDetails)

@@ -14,9 +14,10 @@ export class ServiceCategoryDetailsService {
       return this.http.get(APP_CONSTANT.SERVICECATEGORYDETAILS.GETALL);
      
   }
-  //searchCustomer(searchString) {
-  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.SEARCH_CUSTOMER, JSON.stringify(searchString));
-  //}
+
+   searchCategoryName(searchString) {
+    return this.http.post(APP_CONSTANT.SERVICECATEGORYDETAILS.SEARCH_SERVICECATEGORY, JSON.stringify(searchString));
+  }
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

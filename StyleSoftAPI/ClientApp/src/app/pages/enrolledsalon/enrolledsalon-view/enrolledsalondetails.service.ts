@@ -14,9 +14,11 @@ export class EnrolledSalonDetailsService {
       return this.http.get(APP_CONSTANT.ENROLLEDSALONDETAILS.GETALL);
      
   }
-  //searchCustomer(searchString) {
-  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.SEARCH_CUSTOMER, JSON.stringify(searchString));
-  //}
+
+    searchOwnerName(searchString) {
+        return this.http.post(APP_CONSTANT.ENROLLEDSALONDETAILS.SEARCH_OWNERNAME, JSON.stringify(searchString));
+    }
+  
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

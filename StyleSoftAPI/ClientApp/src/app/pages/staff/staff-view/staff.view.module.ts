@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 //import { AutoCompleteModule } from 'primeng';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { StaffViewComponent } from './staff-view.component';
+import { DialogModule } from '../../../dialog/dialog.module';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 export const routes = [
     { path: '', component: StaffViewComponent, pathMatch: 'full' }
@@ -18,9 +20,9 @@ export const routes = [
   imports: [
         FormsModule,
         GridModule,
-        //DialogModule,
+        DialogModule,
         //CalendarModule,
-        //AutoCompleteModule,
+        AutoCompleteModule,
         ReactiveFormsModule,
         //ValidationBorderModule,
         CommonModule

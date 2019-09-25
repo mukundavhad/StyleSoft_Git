@@ -9,14 +9,16 @@ import { CommonModule } from '@angular/common';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { SaloonViewComponent } from './saloon-view.component';
 import { PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
+import { DialogModule } from '../../../dialog/dialog.module';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   imports: [
         FormsModule,
         GridModule,
-        //DialogModule,
+        DialogModule,
         //CalendarModule,
-        //AutoCompleteModule,
+        AutoCompleteModule,
         ReactiveFormsModule,
         //ValidationBorderModule,
         CommonModule

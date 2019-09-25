@@ -13,13 +13,23 @@ export const APP_CONSTANT={
         //DELETE: API_URL + 'Customer/Delete',
         SEARCH_SHOPLOCATION: API_URL + 'SaloonDetails/SearchShopLocation',
     },
+
+    SERVICESDETAILS: {
+        ADD: API_URL + 'ServicesDetails/Add',
+        GETALL: API_URL + 'ServicesDetails/GetAll',
+        //GETByID: API_URL + 'Customer/GetByID',
+        EDIT: API_URL + 'ServicesDetails/Update',
+        //DELETE: API_URL + 'Customer/Delete',
+        SEARCH_SHOPLOCATION: API_URL + 'Services/SearchShopLocation',
+    },
+
     ENROLLEDSALONDETAILS: {
         ADD: API_URL + 'EnrolledSalonDetails/Add',
         GETALL: API_URL + 'EnrolledSalonDetails/GetAll',
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'EnrolledSalonDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
-        //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
+        SEARCH_OWNERNAME: API_URL + 'EnrolledSalonDetails/SearchOwnerName',
     },
 
     SERVICECATEGORYDETAILS: {
@@ -28,7 +38,7 @@ export const APP_CONSTANT={
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'ServiceCategoryDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
-        //SEARCH_CUSTOMER: API_URL + 'Customer/SearchCustomer',
+        SEARCH_SERVICECATEGORY: API_URL + 'ServiceCategoryDetails/SearchServicesCatogoryName',
     },
 
     ADDRESSDETAILS: {

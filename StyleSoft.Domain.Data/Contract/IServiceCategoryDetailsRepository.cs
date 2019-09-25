@@ -7,7 +7,7 @@ namespace StyleSoft.Domain.Data.Contract
        public interface IServiceCategoryDetailsRepository : IRepositoryBase<ServiceCategory>
     {
         bool Authenticate();
-        //IEnumerable<SalonLocation> SearchSaloonDetails(string searchString);
+        IEnumerable<ServiceCategory> SearchServiceCategoryName(string searchString);
 
         //IEnumerable<SalonLocation> GetAllSaloonDetails();
     }
