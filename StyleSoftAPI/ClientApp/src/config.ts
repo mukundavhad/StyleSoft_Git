@@ -20,7 +20,15 @@ export const APP_CONSTANT={
         //GETByID: API_URL + 'Customer/GetByID',
         EDIT: API_URL + 'ServicesDetails/Update',
         //DELETE: API_URL + 'Customer/Delete',
-        SEARCH_SHOPLOCATION: API_URL + 'Services/SearchShopLocation',
+        SEARCH_SERVICENAME: API_URL + 'ServicesDetails/SearchServiceName',
+    },
+
+    APPONTMENTDETAILS: {
+        ADD: API_URL + 'AppointmentDetails/Add',
+        GETALL: API_URL + 'AppointmentDetails/GetAll',
+        //GETByID: API_URL + 'Customer/GetByID',
+        EDIT: API_URL + 'AppointmentDetails/Update',
+        //DELETE: API_URL + 'Customer/Delete',
     },
 
     ENROLLEDSALONDETAILS: {

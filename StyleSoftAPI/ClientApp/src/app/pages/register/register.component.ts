@@ -47,7 +47,7 @@ export class RegisterComponent {
                     //login successful if there's a jwt token in the response
                     if (enrolledsalondetails) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        this.router.navigate(['/']);
+                        this.router.navigate(['/saloonview']);
                     }
                     //return enrolledsalondetails;
                 });

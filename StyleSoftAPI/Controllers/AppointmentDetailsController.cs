@@ -9,28 +9,21 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
-    [Route("api/ServicesDetails/")]
-    public class ServicesDetailsController : Controller
+    [Route("api/AppointmentDetails/")]
+    public class AppointmentDetailsController : Controller
     {
         private IRepositoryWrapper _repoWrapper;
 
-        public ServicesDetailsController(IRepositoryWrapper repoWrapper)
+        public AppointmentDetailsController(IRepositoryWrapper repoWrapper)
         {
             _repoWrapper = repoWrapper;
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<Services> GetAll()
+        public IEnumerable<Appointment> GetAll()
         {
-            var servicesdetails = this._repoWrapper.Services.GetAllServicesDetails().ToList();
-            return servicesdetails;
-        }
-
-        [HttpPost("SearchServiceName")]
-        public IEnumerable<Services> SearchServiceName([FromBody]string searchString)
-        {
-            var Servicename = this._repoWrapper.Services.SearchServiceName(searchString).ToList();
-            return Servicename;
+            var appointmentdetails = this._repoWrapper.Appointment.GetAllAppointmentDetails().ToList();
+            return appointmentdetails;
         }
 
         //[HttpPost("GetByID")] 
@@ -41,12 +34,12 @@ namespace StyleSoftAPI.Controllers
         //}
 
         [HttpPost("Add")]
-        public bool Add([FromBody] Services services)
+        public bool Add([FromBody] Appointment appointments)
         {
             try
             {
-                this._repoWrapper.Services.Create(services);
-                this._repoWrapper.Services.Save();
+                this._repoWrapper.Appointment.Create(appointments);
+                this._repoWrapper.Appointment.Save();
                 return true;
             }
             catch (Exception e)
@@ -56,12 +49,12 @@ namespace StyleSoftAPI.Controllers
         }
 
         [HttpPost("Update")]
-        public bool Update([FromBody] Services services)
+        public bool Update([FromBody] Appointment appointments)
         {
             try
             {
-                this._repoWrapper.Services.Update(services);
-                this._repoWrapper.Services.Save();
+                this._repoWrapper.Appointment.Update(appointments);
+                this._repoWrapper.Appointment.Save();
                 return true;
             }
             catch (Exception e)

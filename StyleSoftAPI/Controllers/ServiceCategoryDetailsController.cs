@@ -8,7 +8,7 @@ using StyleSoft.Domain.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
-    //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/ServiceCategoryDetails/")]
     public class ServiceCategoryDetailsController : Controller
     {

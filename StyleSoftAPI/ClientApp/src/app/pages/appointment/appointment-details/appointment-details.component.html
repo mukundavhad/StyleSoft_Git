@@ -1,0 +1,114 @@
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Appointment Details</strong>
+            <!--<small>Form</small>-->
+        </div>
+        <div>
+            <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit(appointmentForm.value)">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Owner Name :</strong></label>
+                                <div>
+                                    <p-autoComplete formControlName="OwnerName" [suggestions]="ownernameList" (completeMethod)="searchOwnerName($event)"
+                                                    [dropdown]="true" [forceSelection]="true" field="SalonOwnerName"></p-autoComplete> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Shop Location :</strong></label>
+                                <div>
+                                    <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
+                                                    [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Customer Mobile :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="CustomerMobile" appValidationBorder type="text" pInputText id="customermobile" name="customermobile" class="form-control">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Relation Type :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <select formControlName="RelationType" appValidationBorder id="select" name="select" class="form-control">
+                                            <option value="Please select">Please select</option>
+                                            <option value="Self">Self</option>
+                                            <option value="Spouse">Spouse</option>
+                                            <option value="Child">Child</option>
+                                            <option value="Guest">Guest</option>
+                                        </select>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Appointment Date :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <p-calendar formControlName="AppointmentDate" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="textarea-input"><strong>Appointment Time :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <input formControlName="AppointmentTime" appValidationBorder type="text" pInputText id="appointmenttime" name="appointmenttime" class="form-control">
+                                        <!--<p-calendar formControlName="AppointmentTime" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>-->
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <label for="select"><strong>Service Name :</strong></label>
+                                <div>
+                                    <span class="ui-float-label">
+                                        <p-autoComplete formControlName="ServiceName" [suggestions]="servicenameList" (completeMethod)="searchServiceName($event)"
+                                                        [dropdown]="true" [forceSelection]="true" field="ServiceName"></p-autoComplete>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group-btn" dropdown>
+                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

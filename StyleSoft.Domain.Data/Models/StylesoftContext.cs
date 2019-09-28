@@ -34,7 +34,7 @@ namespace StyleSoft.Domain.Data.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=CHINTAMANI-PC;Database=Stylesoft;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=ADMIN-PC\\SQLEXPRESS;Database=Stylesoft1;Trusted_Connection=True;");
             }
         }
 
@@ -310,12 +310,6 @@ namespace StyleSoft.Domain.Data.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.UpdateDate).HasColumnType("datetime");
-
-                //entity.HasOne(d => d.EnrolledSalon)
-                //    .WithMany(p => p.StaffDetails)
-                //    .HasForeignKey(d => d.EnrolledSalonId)
-                //    .OnDelete(DeleteBehavior.ClientSetNull)
-                //    .HasConstraintName("FK_Staff_EnrolledSalon");
 
                 entity.HasOne(d => d.ShopLocation)
                     .WithMany(p => p.StaffDetails)

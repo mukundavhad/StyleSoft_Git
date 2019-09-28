@@ -47,7 +47,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/@syncfusion/ej2-base/styles/material.css"
+              "./node_modules/@syncfusion/ej2-base/styles/material.css",
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

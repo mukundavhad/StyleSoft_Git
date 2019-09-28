@@ -9,5 +9,7 @@ namespace StyleSoft.Domain.Data.Contract
         bool Authenticate();
 
         IEnumerable<Services> GetAllServicesDetails();
+
+        IEnumerable<Services> SearchServiceName(string searchString);
     }
 }

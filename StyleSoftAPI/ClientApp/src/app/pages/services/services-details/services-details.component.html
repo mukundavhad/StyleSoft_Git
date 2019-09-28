@@ -32,8 +32,10 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Service Category :</strong></label>
-                                <p-autoComplete formControlName="CategoryName" [suggestions]="categorynameList" (completeMethod)="searchCategoryName($event)"
-                                                [dropdown]="true" [forceSelection]="true" field="CategoryName"></p-autoComplete>
+                                <span class="ui-fluid">
+                                    <p-autoComplete formControlName="CategoryName" [suggestions]="categorynameList" (completeMethod)="searchCategoryName($event)"
+                                                    [dropdown]="true" [forceSelection]="true" field="CategoryName"></p-autoComplete>
+                                </span>
                             </div>
                         </div>
                     </div>

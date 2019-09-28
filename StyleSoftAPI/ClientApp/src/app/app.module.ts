@@ -41,6 +41,14 @@ import { ServiceCategoryDetailsModule } from './pages/servicecategory/servicecat
 import { ServiceCategoryViewModule } from './pages/servicecategory/servicecategory-view/servicecategory.view.module';
 import { ServicesDetailsModule } from './pages/services/services-details/services.details.module';
 import { ServicesViewModule } from './pages/services/services-view/services.view.module';
+import { AppCalendarModule } from './pages/calendar/app-calendar.module';
+import { AppointmentViewModule } from './pages/appointment/appointment-view/appointment.view.module';
+import { AppointmentDetailsModule } from './pages/appointment/appointment-details/appointment.details.module';
+import { CalendarModule } from 'primeng/calendar';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({  
@@ -48,6 +56,11 @@ import { ServicesViewModule } from './pages/services/services-view/services.view
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        CalendarModule,
+        AutoCompleteModule,
+        BsDropdownModule.forRoot(),
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
         BrowserModule,
         PerfectScrollbarModule,
         HttpClientModule,
@@ -66,7 +79,10 @@ import { ServicesViewModule } from './pages/services/services-view/services.view
         ServiceCategoryDetailsModule,
         ServiceCategoryViewModule,
         ServicesDetailsModule,
-        ServicesViewModule
+        ServicesViewModule,
+        AppCalendarModule,
+        AppointmentViewModule,
+        AppointmentDetailsModule
   ],
   declarations: [
     AppComponent,

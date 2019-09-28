@@ -28,6 +28,14 @@ namespace StyleSoft.Domain.Data.Repositories
             return services;
         }
 
+        public IEnumerable<Services> SearchServiceName(string searchString)
+        {
+            if (string.IsNullOrEmpty(searchString))
+            { return this.ktConContext.Set<Services>(); }
+
+            return this.ktConContext.Set<Services>().Where(servicename => servicename.ServiceName.ToLower().Contains(searchString.ToLower()));
+        }
+
         bool IServicesDetailsRepository.Authenticate()
         {
             return true;

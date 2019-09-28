@@ -23,7 +23,19 @@ namespace StyleSoft.Domain.Data.Repositories
         private StaffDetailsRepository _staff;
         private ServiceCategoryDetailsRepository _servicecategory;
         private ServicesDetailsRepository _services;
+        private AppointmentDetailsRepository _appointment;
 
+        public IAppointmentDetailsRepository Appointment
+        {
+            get
+            {
+                if (_appointment == null)
+                {
+                    _appointment = new AppointmentDetailsRepository(_repoContext);
+                }
+                return _appointment;
+            }
+        }
         public IServicesDetailsRepository Services
         {
             get

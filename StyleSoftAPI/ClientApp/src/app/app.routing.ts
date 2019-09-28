@@ -11,6 +11,8 @@ import { CustomerViewComponent } from './pages/Customer/customer-view/customer-v
 import { StaffViewComponent } from './pages/staff/staff-view/staff-view.component';
 import { ServiceCategoryViewComponent } from './pages/servicecategory/servicecategory-view/servicecategory-view.component';
 import { ServicesViewComponent } from './pages/services/services-view/services-view.component';
+import { AppCalendarComponent } from './pages/calendar/app-calendar.component';
+import { AppointmentViewComponent } from './pages/appointment/appointment-view/appointment-view.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +27,8 @@ export const routes: Routes = [
             { path: 'staffview', component: StaffViewComponent, data: { breadcrumb: 'Staff Details' } },
             { path: 'servicecategoryview', component: ServiceCategoryViewComponent, data: { breadcrumb: 'Service Category' } },
             { path: 'servicesview', component: ServicesViewComponent, data: { breadcrumb: 'Services' } },
+            //{ path: 'appointmentview', component: AppCalendarComponent, data: { breadcrumb: 'Appointment' } },
+            { path: 'appointmentview', component: AppointmentViewComponent, data: { breadcrumb: 'Appointment' } },
             { path: 'blank', component: BlankComponent, data: { breadcrumb: 'Blank page' } },
             { path: 'search', component: SearchComponent, data: { breadcrumb: 'Search' } }
         ]
