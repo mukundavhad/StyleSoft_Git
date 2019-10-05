@@ -8,7 +8,7 @@ namespace StyleSoft.Domain.Data.Contract
     {
         bool Authenticate();
 
-        IEnumerable<Services> GetAllServicesDetails();
+        IEnumerable<ServicesView> GetAllServicesDetails();
 
         IEnumerable<Services> SearchServiceName(string searchString);
     }

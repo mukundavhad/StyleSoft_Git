@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { CalendarModule } from 'primeng/calendar';
+//import { CalendarModule } from 'primeng/calendar';
 import { AppointmentDetailsComponent } from './appointment-details.component';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 export const routes = [
     { path: '', component: AppointmentDetailsComponent, pathMatch: 'full' }
@@ -15,7 +16,7 @@ export const routes = [
     CommonModule,
         FormsModule,
         AutoCompleteModule,
-        CalendarModule,
+        DateTimePickerModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],

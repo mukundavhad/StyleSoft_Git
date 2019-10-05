@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
-import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
-import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'angular-calendar';
+import { DirectivesModule } from '../../theme/directives/directives.module';
 import { AppCalendarComponent } from './app-calendar.component';
 
-/**
- * Module
- */
+export const routes = [
+  { path: '', component: AppCalendarComponent, pathMatch: 'full' }
+];
+
 @NgModule({
-    imports: [
-        BrowserModule,
-        ScheduleModule,
-        ButtonModule
-    ],
-    declarations: [AppCalendarComponent],
-    bootstrap: [AppCalendarComponent],
-    providers: [DayService,
-        WeekService,
-        WorkWeekService,
-        MonthService,
-        AgendaService,
-        MonthAgendaService]
+  imports: [
+    CommonModule,
+    FormsModule,
+    CalendarModule,
+    DirectivesModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [
+    AppCalendarComponent
+  ]
 })
 export class AppCalendarModule { }

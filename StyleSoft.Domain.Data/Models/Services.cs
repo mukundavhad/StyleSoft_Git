@@ -13,12 +13,13 @@ namespace StyleSoft.Domain.Data.Models
 
         public int ServicesId { get; set; }
         public int EnrolledSalonId { get; set; }
+        
         public int? ShopLocationId { get; set; }
         public int CategoryId { get; set; }
         public string ServiceName { get; set; }
         public string ServiceDescription { get; set; }
         public decimal? ServiceCost { get; set; }
-        public byte[] ServiceDuration { get; set; }
+        public string ServiceDuration { get; set; }
         public string Gender { get; set; }
         public decimal? CommissionPercentage { get; set; }
         public DateTime? CreateDate { get; set; }

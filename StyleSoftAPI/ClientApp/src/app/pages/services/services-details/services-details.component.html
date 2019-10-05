@@ -11,17 +11,19 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Owner Name :</strong></label>
-                                <p-autoComplete formControlName="OwnerName" [suggestions]="ownernameList" (completeMethod)="searchOwnerName($event)"
-                                                 [dropdown]="true" [forceSelection]="true" field="SalonOwnerName"></p-autoComplete>
+                                <div>
+                                    <ejs-autocomplete #EnrolledSalonSample id='EnrolledSalonId' formControlName='OwnerName'  name='ownername' [dataSource]='ownernameList' [placeholder]='textownername' [fields]='fieldownername' [autofill]='autofill' [filterType]='filterType'>
+                                    </ejs-autocomplete>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="select"><strong>Shop Location :</strong></label>
-                                <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
-                                                [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
+                                <label for="select"><strong>Shop Name :</strong></label>
+                                <ejs-autocomplete #ShopLocationSample id='ShopLocationId' formControlName='ShopLocation' name='shoplocation' [dataSource]='shoplocationList' [placeholder]='textshoplocation' [fields]='fieldshoplocation' [autofill]='autofill' [filterType]='filterType'>
+                                </ejs-autocomplete>
                             </div>
                         </div>
                     </div>
@@ -33,8 +35,8 @@
                             <div class="form-group">
                                 <label for="select"><strong>Service Category :</strong></label>
                                 <span class="ui-fluid">
-                                    <p-autoComplete formControlName="CategoryName" [suggestions]="categorynameList" (completeMethod)="searchCategoryName($event)"
-                                                    [dropdown]="true" [forceSelection]="true" field="CategoryName"></p-autoComplete>
+                                    <ejs-autocomplete #CategorySample id='CategoryId' formControlName='CategoryName' name='categoryname' [dataSource]='categorynameList' [placeholder]='textcategoryname' [fields]='fieldcategoryname' [autofill]='autofill' [filterType]='filterType'>
+                                    </ejs-autocomplete>
                                 </span>
                             </div>
                         </div>
@@ -69,7 +71,7 @@
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="select"><strong>Service Cost :</strong></label>
+                                <label for="select"><strong>Service Cost :</strong></label> 
                                 <input formControlName="ServiceCost" appValidationBorder type="text" pInputText id="servicecost" name="servicecost" class="form-control">
                             </div>
                         </div>

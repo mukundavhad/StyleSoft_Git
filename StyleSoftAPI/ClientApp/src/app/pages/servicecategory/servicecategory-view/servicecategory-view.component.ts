@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { APP_CONSTANT } from '../../../../config';
-import { Router } from '@angular/router';
-import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DialogService } from '../../../dialog/dialog.service';
 import { ServiceCategoryDetailsService } from './servicecategorydetails.service';
 import { ServiceCategoryDetailsComponent } from '../servicecategory-details/servicecategory-details.component';
@@ -11,42 +7,111 @@ import { ServiceCategoryDetailsComponent } from '../servicecategory-details/serv
 @Component({
     selector: 'app-servicecategory-view',
     templateUrl: './servicecategory-view.component.html',
-    styleUrls: ['./servicecategory-view.component.scss']
+  encapsulation: ViewEncapsulation.None
 })
-export class ServiceCategoryViewComponent implements OnInit {
-    public rowData: Object[];
-    public pageSettings: PageSettingsModel;
 
-    constructor(private router: Router, private dialog: DialogService, private formBuilder: FormBuilder, private http: HttpClient, private servicecategorydetailsservice:ServiceCategoryDetailsService) { }
-
-    ngOnInit() {
-
-        let httpOptions = {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-        };
-
-        this.servicecategorydetailsservice.loadserviceCategoryDetails()
-            .subscribe((serviceCategory: any) => {
-                this.rowData = serviceCategory;
-            });
-        this.pageSettings = { pageSize: 6 };
+export class ServiceCategoryViewComponent {
+  public data = [];
+  public settings = {
+    selectMode: 'single',  //single|multi
+    hideHeader: false,
+    hideSubHeader: false,
+    actions: {
+      columnTitle: 'Actions',
+      add: true,
+      edit: true,
+      delete: true,
+      custom: [],
+      position: 'right' // left|right
+    },
+    add: {     
+      addButtonContent: '<h4 class="mb-1"><i class="fa fa-plus ml-3 text-success"></i></h4>',
+      createButtonContent: '<i class="fa fa-check mr-3 text-success"></i>',
+      cancelButtonContent: '<i class="fa fa-times text-danger"></i>'
+    },
+    edit: {
+      editButtonContent: '<i class="fa fa-pencil mr-3 text-primary"></i>',
+      saveButtonContent: '<i class="fa fa-check mr-3 text-success"></i>',
+      cancelButtonContent: '<i class="fa fa-times text-danger"></i>'
+    },
+    delete: {
+      deleteButtonContent: '<i class="fa fa-trash-o text-danger"></i>',
+      confirmDelete: true
+    },
+    noDataMessage: 'No data found',
+    columns: {     
+        CategoryId: {
+        title: 'ID',
+        editable: false,
+        width: '60px',
+        type: 'html',
+        valuePrepareFunction: (value) => { return '<div class="text-center">' + value + '</div>'; }       
+      },
+        CategoryName: {
+            title: 'Category Name',
+        type: 'string',
+        filter: true
+      }, 
+    },
+    pager: {
+      display: true,
+      perPage: 10
     }
+  };
 
+    constructor(private http: HttpClient, private dialog: DialogService, private servicecategorydetailsservice: ServiceCategoryDetailsService) { 
+    //this.getData((data) => {
+    //  this.data = data;
+    //});
 
-    redirectToAddNew() {
-        const ref = this.dialog.open(ServiceCategoryDetailsComponent, { modalConfig: { title: 'Add/Edit Service Category Details' }, isEditable: false });
+        this.servicecategorydetailsservice.loadCategoryDetails()
+          .subscribe((category: any) => {
+              this.data = category;
+          });
+  }
+
+redirectToAddNew() {
+    const ref = this.dialog.open(ServiceCategoryDetailsComponent, { data: {}, modalConfig: { title: 'Add/Edit Service Category', width: '55%',height:'70%' }, isEditable: true });
         ref.afterClosed.subscribe(result => {
-             this.rowData.push(result); //TODO this should be implemented like this
             this.RefreshGrid();
         });
     }
 
     RefreshGrid = () => {
-        
-        this.servicecategorydetailsservice.loadserviceCategoryDetails()
-            .subscribe((enrolledsalon: any) => {
-                this.rowData = enrolledsalon;
+        this.servicecategorydetailsservice.loadCategoryDetails()
+            .subscribe((category: any) => {
+                this.data = category;
             });
-        this.pageSettings = { pageSize: 6 };
+        //this.pageSettings = { pageSize: 6 };
     }
+
+  //public getData(data) {
+  //  const req = new XMLHttpRequest();
+  //  req.open('GET', 'assets/data/users.json');
+  //  req.onload = () => {
+  //    data(JSON.parse(req.response));
+  //  };
+  //  req.send();
+  //}
+
+  public onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  public onRowSelect(event){
+   // console.log(event);
+  }
+
+  public onUserRowSelect(event){
+    //console.log(event);   //this select return only one page rows
+  }
+
+  public onRowHover(event){
+    //console.log(event);
+  }
+
 }

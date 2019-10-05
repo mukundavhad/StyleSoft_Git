@@ -24,7 +24,13 @@ export class VerticalMenuComponent implements OnInit {
           if (event instanceof NavigationEnd) {
               window.scrollTo(0, 0);
               let activeLink = this.menuService.getActiveLink(this.menuItems);
-              this.menuService.setActiveLink(this.menuItems, activeLink); 
+              this.menuService.setActiveLink(this.menuItems, activeLink);
+              jQuery('.tooltip').tooltip({
+                sanitize: false,
+                sanitizeFn: function (content) {
+                  return null;
+                }
+              }); 
               jQuery('.tooltip').tooltip('hide');
               if(window.innerWidth <= 768){
                 this.settings.theme.showMenu = false; 
@@ -37,8 +43,16 @@ export class VerticalMenuComponent implements OnInit {
     let menu_wrapper = this.elementRef.nativeElement.children[0];
     this.menuService.createMenu(this.menuItems, menu_wrapper, 'vertical');
     
-    if(this.settings.theme.menuType == 'mini')
+    if(this.settings.theme.menuType == 'mini'){
+      jQuery('.menu-item-link').tooltip({
+        sanitize: false,
+        sanitizeFn: function (content) {
+          return null;
+        }
+      });
       jQuery('.menu-item-link').tooltip();
+    }
+      
   }
 
   ngAfterViewInit(){

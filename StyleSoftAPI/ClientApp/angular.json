@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "startng-seed": {
+    "startng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,7 +31,7 @@
       },
       "root": "",
       "sourceRoot": "src", 
-      "prefix": "app",
+      "prefix": "app", 
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -46,8 +46,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/@syncfusion/ej2-base/styles/material.css",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -85,18 +84,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "startng-seed:build"
+            "browserTarget": "startng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "startng-seed:build:production"
+              "browserTarget": "startng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "startng-seed:build"
+            "browserTarget": "startng:build"
           }
         },
         "test": {
@@ -133,16 +132,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "startng-seed:serve"
+            "devServerTarget": "startng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "startng-seed:serve:production"
+              "devServerTarget": "startng:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "startng-seed"
+  "defaultProject": "startng"
 }

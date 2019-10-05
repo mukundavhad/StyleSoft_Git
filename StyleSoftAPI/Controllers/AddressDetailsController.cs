@@ -8,7 +8,8 @@ using StyleSoft.Domain.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
-    //[Authorize][Produces("application/json")]
+   //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/AddressDetails/")]
     public class AddressDetailsController : Controller
     {

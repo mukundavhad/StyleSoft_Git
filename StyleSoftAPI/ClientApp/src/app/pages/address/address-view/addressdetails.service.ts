@@ -15,7 +15,8 @@ export class AddressDetailsService {
      
   }
     searchAddress(searchString) {
-        return this.http.post(APP_CONSTANT.ADDRESSDETAILS.SEARCH_ADDRESSDETAILS, JSON.stringify(searchString));
+
+        return this.http.post(APP_CONSTANT.ADDRESSDETAILS.SEARCH_ADDRESSDETAILS,searchString);
     }
 
   //getCustomerByID(id) {

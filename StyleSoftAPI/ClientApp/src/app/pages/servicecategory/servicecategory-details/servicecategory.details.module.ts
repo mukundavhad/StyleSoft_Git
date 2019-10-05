@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceCategoryDetailsComponent } from './servicecategory-details.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 
 export const routes = [
     { path: '', component: ServiceCategoryDetailsComponent, pathMatch: 'full' }
@@ -12,7 +11,6 @@ export const routes = [
 @NgModule({
   imports: [
         CommonModule,
-        AutoCompleteModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)

@@ -1,13 +1,20 @@
-.register-container{
+.register-container {
+    padding-top: 100px;
     position: absolute;
-    .card{
-        .card-header{
+
+    .card {
+
+        .card-header {
             width: 80px;
             height: 80px;
             margin: 0 auto;
-            margin-top: -40px;
+            margin-top: -60px;
             border-radius: 50%;
             font-size: 36px;
         }
     }
+}
+
+.app.combined .register-container .card {
+    background-color: #a349a4;
 }

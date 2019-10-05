@@ -10,14 +10,13 @@ providedIn :'root'
 export class ServiceCategoryDetailsService {
   constructor(private http: HttpClient) { }
 
-  loadserviceCategoryDetails() {
+  loadCategoryDetails() {
       return this.http.get(APP_CONSTANT.SERVICECATEGORYDETAILS.GETALL);
      
   }
-
-   searchCategoryName(searchString) {
-    return this.http.post(APP_CONSTANT.SERVICECATEGORYDETAILS.SEARCH_SERVICECATEGORY, JSON.stringify(searchString));
-  }
+    searchAddress(searchString) {
+        return this.http.post(APP_CONSTANT.ADDRESSDETAILS.SEARCH_ADDRESSDETAILS, JSON.stringify(searchString));
+    }
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

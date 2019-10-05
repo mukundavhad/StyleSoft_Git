@@ -1,19 +1,19 @@
 <div class="col-sm-12">
     <div class="card">
-        <div class="card-header">
-            <strong>Appointment Details</strong>
-            <!--<small>Form</small>-->
-        </div>
+        <!--<div class="card-header">
+            <strong>Appointment Details</strong> 
+            <small>Form</small> 
+        </div>-->
         <div>
             <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit(appointmentForm.value)">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="select"><strong>Owner Name :</strong></label>
+                                <label for="select"><strong>Owner Name :</strong></label> 
                                 <div>
-                                    <p-autoComplete formControlName="OwnerName" [suggestions]="ownernameList" (completeMethod)="searchOwnerName($event)"
-                                                    [dropdown]="true" [forceSelection]="true" field="SalonOwnerName"></p-autoComplete> 
+                                    <ejs-autocomplete #EnrolledSalonSample id='EnrolledSalonId' formControlName='OwnerName' name='ownername' [dataSource]='ownernameList' [placeholder]='textownername' [fields]='fieldownername' [autofill]='autofill' [filterType]='filterType'>
+                                    </ejs-autocomplete>
                                 </div>
                             </div>
                         </div>
@@ -21,10 +21,10 @@
                     <div class="col-sm-4">
                         <div class="card-block">
                             <div class="form-group">
-                                <label for="select"><strong>Shop Location :</strong></label>
+                                <label for="select"><strong>Shop Locality :</strong></label>
                                 <div>
-                                    <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
-                                                    [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
+                                    <ejs-autocomplete #ShopLocationSample id='ShopLocationId' formControlName='ShopLocation' name='shoplocation' [dataSource]='shoplocationList' [placeholder]='textshoplocation' [fields]='fieldshoplocation' [autofill]='autofill' [filterType]='filterType'>
+                                    </ejs-autocomplete>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,9 @@
                                 <label for="textarea-input"><strong>Appointment Date :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
-                                        <p-calendar formControlName="AppointmentDate" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>
+                                        <ejs-datetimepicker id="appointmentdate" name="appointmentdate" formControlName="AppointmentDate" placeholder='Select a date and time' (renderDayCell)='onRenderCell($event)'></ejs-datetimepicker>
+                                        <!--<input formControlName="AppointmentDate" appValidationBorder type="text" pInputText id="appointmentdate" name="appointmentdate" class="form-control">-->
+                                        <!--<p-calendar formControlName="AppointmentDate" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>-->
                                     </span>
                                 </div>
                             </div>
@@ -96,8 +98,8 @@
                                 <label for="select"><strong>Service Name :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
-                                        <p-autoComplete formControlName="ServiceName" [suggestions]="servicenameList" (completeMethod)="searchServiceName($event)"
-                                                        [dropdown]="true" [forceSelection]="true" field="ServiceName"></p-autoComplete>
+                                        <ejs-autocomplete #ServiceSample id='ServiceId' formControlName='ServiceName' name='servicename' [dataSource]='servicenameList' [placeholder]='textservice' [fields]='fieldservice' [autofill]='autofill' [filterType]='filterType'>
+                                        </ejs-autocomplete>
                                     </span>
                                 </div>
                             </div>

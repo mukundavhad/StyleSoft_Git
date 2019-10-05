@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/StaffDetails/")]
     public class StaffDetailsController : Controller
     {
@@ -19,14 +20,15 @@ namespace StyleSoftAPI.Controllers
         {
             _repoWrapper = repoWrapper;
         }
-
+         
 
         [HttpGet("[action]")]
-        public IEnumerable<StaffDetails> GetAll()
+        public IEnumerable<StaffDetailsView> GetAll()
         {
-            var Staffdetails = this._repoWrapper.Staff.FindAll().ToList();
-            return Staffdetails;
+            var staffdetails = this._repoWrapper.Staff.GetAllStaffDetails().ToList();
+            return staffdetails;
         }
+
         //[HttpPost("SearchCustomer")]
         //public IEnumerable<TblCustomerMaster> SearchCustomer([FromBody]string searchString)
         //{

@@ -11,7 +11,7 @@ namespace StyleSoft.Domain.Data.Models
         public string CustomerMobile { get; set; }
         public string RelationType { get; set; }
         public DateTime? AppointmentDate { get; set; }
-        public byte[] AppointmentTime { get; set; }
+        public string AppointmentTime { get; set; }
         public int? ServiceId { get; set; }
         public string Status { get; set; }
         public DateTime? CreateDate { get; set; }

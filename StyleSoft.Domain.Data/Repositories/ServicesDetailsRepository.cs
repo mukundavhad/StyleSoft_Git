@@ -18,14 +18,34 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
-        public IEnumerable<Services> GetAllServicesDetails()
+        public IEnumerable<ServicesView> GetAllServicesDetails()
         {
-            var services = this.ktConContext.Services
-                       .Include(blog => blog.EnrolledSalon)
-                       .Include(blog=>blog.ShopLocation)
-                       .Include(blog=>blog.Category)
-                       .ToList();
-            return services;
+            var services = (from s in this.ktConContext.Services
+                            join e in this.ktConContext.EnrolledSalon
+                            on s.EnrolledSalonId equals e.EnrolledSalonId
+                            join sl in this.ktConContext.SalonLocation
+                            on s.ShopLocationId equals sl.ShopLocationId
+                            join c in this.ktConContext.ServiceCategory
+                            on s.CategoryId equals c.CategoryId
+                            select new ServicesView
+                            {
+                                ServicesId = s.ServicesId,
+                                EnrolledSalonId = s.EnrolledSalonId,
+                                OwnerName = e.SalonOwnerName,
+                                ShopLocationId = s.ShopLocationId,
+                                ShopName = sl.ShopName,
+                                CategoryId = s.CategoryId,
+                                CategoryName = c.CategoryName,
+                                ServiceName = s.ServiceName,
+                                ServiceDescription = s.ServiceDescription,
+                                ServiceCost = s.ServiceCost,
+                                ServiceDuration = s.ServiceDuration,
+                                Gender = s.Gender,
+                                CommissionPercentage = s.CommissionPercentage
+
+                            });
+            return services.ToList();
+
         }
 
         public IEnumerable<Services> SearchServiceName(string searchString)

@@ -79,7 +79,9 @@ namespace StyleSoft.Domain.Data.Models
             {
                 entity.Property(e => e.AppointmentDate).HasColumnType("datetime");
 
-                entity.Property(e => e.AppointmentTime).IsRowVersion();
+                entity.Property(e => e.AppointmentTime)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
@@ -261,7 +263,10 @@ namespace StyleSoft.Domain.Data.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ServiceDuration).IsRowVersion();
+                entity.Property(e => e.ServiceDuration)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
 
                 entity.Property(e => e.ServiceName)
                     .HasMaxLength(20)

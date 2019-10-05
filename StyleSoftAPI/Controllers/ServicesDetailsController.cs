@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/ServicesDetails/")]
     public class ServicesDetailsController : Controller
     {
@@ -20,7 +21,7 @@ namespace StyleSoftAPI.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<Services> GetAll()
+        public IEnumerable<ServicesView> GetAll()
         {
             var servicesdetails = this._repoWrapper.Services.GetAllServicesDetails().ToList();
             return servicesdetails;

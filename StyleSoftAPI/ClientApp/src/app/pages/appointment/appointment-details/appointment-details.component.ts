@@ -1,13 +1,14 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APP_CONSTANT } from '../../../../config';
 import { DialogRef } from '../../../dialog/dialog-ref';
 import { SaloonDetailsService } from '../../saloon/saloon-view/saloondetails.service';
-import { ServiceCategoryDetailsService } from '../../servicecategory/servicecategory-view/servicecategorydetails.service';
 import { EnrolledSalonDetailsService } from '../../enrolledsalon/enrolledsalon-view/enrolledsalondetails.service';
 import { ServicesDetailsService } from '../../services/services-view/servicesdetails.service';
+import { DropDownBase } from '@syncfusion/ej2-dropdowns';
+import { DateTimePickerComponent } from "@syncfusion/ej2-angular-calendars";
 
 @Component({
   selector: 'app-appointment-details',
@@ -17,10 +18,27 @@ import { ServicesDetailsService } from '../../services/services-view/servicesdet
 })
 export class AppointmentDetailsComponent implements OnInit   {
     public appointmentForm: FormGroup;
-    public servicenameList: [];
+    public textownername: string = "Find Shop Owner Name";
+    public textshoplocation: string = "Find Shop Locality";
+    public textservice: string = "Find Service";
+    public autofill: Boolean = true;
+    public filterType: string = 'StartsWith';
+    public fieldownername: Object = { key: 'EnrolledSalonId', value: 'SalonOwnerName' };
+    public fieldshoplocation: Object = { key: 'ShopLocationId', value: 'Locality' };
+    public fieldservice: Object = { key: 'ServiceId', value: 'ServiceName' };
     public ownernameList: [];
-    public shoplocationList: []; 
+    public shoplocationList: [];
+    public servicenameList: [];
     public isEditable: boolean = false;
+
+    @ViewChild('EnrolledSalonSample', { static: false })
+    public EnrolledSampleObj: DropDownBase;
+
+    @ViewChild('ShopLocationSample', { static: false })
+    public LocationSampleObj: DropDownBase;
+
+    @ViewChild('ServiceSample', { static: false })
+    public ServiceSampleObj: DropDownBase;
 
     constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private servicesdetailsService: ServicesDetailsService, private saloondetailsService: SaloonDetailsService,
          private enrolledsalondetailsService: EnrolledSalonDetailsService) {
@@ -42,24 +60,30 @@ export class AppointmentDetailsComponent implements OnInit   {
             ShopLocation: [{}],
             ServiceName: [{}],
         });
+
+
+        this.enrolledsalondetailsService.loadEnrolledSalonDetails()
+            .subscribe((enrolledsalon: any) => {
+                this.ownernameList = enrolledsalon;
+            });
+
+        this.saloondetailsService.loadSaloonDetails()
+            .subscribe((location: any) => {
+                this.shoplocationList = location;
+            });
+
+        this.servicesdetailsService.loadServicesDetails()
+            .subscribe((service: any) => {
+                this.servicenameList = service;
+            });
     }
 
-    searchShopLocation(event) {
-        this.saloondetailsService.searchShopLocation(event.query).subscribe((data: any) => {
-            this.shoplocationList = data;
-        });
-    }
-
-    searchOwnerName(event) {
-        this.enrolledsalondetailsService.searchOwnerName(event.query).subscribe((data: any) => {
-            this.ownernameList = data;
-        });
-    }
-
-    searchServiceName(event) {
-        this.servicesdetailsService.searchServiceName(event.query).subscribe((data: any) => {
-            this.servicenameList = data;
-        });
+    onRenderCell(args) {
+        /*Apply selected format to the component*/
+        if (args.date.getDay() == 0 || args.date.getDay() == 6) {
+            //sets isDisabled to true to disable the date.
+            args.isDisabled = true;
+        }
     }
 
     public onSubmit(values: Object): void {
@@ -69,11 +93,11 @@ export class AppointmentDetailsComponent implements OnInit   {
 
         let appointmentdetails = this.appointmentForm.value;
 
-        appointmentdetails.EnrolledSalonId = appointmentdetails.OwnerName.EnrolledSalonId;
+        appointmentdetails.EnrolledSalonId = this.EnrolledSampleObj.itemData["EnrolledSalonId"];
         delete appointmentdetails.OwnerName;
-        appointmentdetails.ShopLocationId = appointmentdetails.ShopLocation.ShopLocationId;
+        appointmentdetails.ShopLocationId = this.LocationSampleObj.itemData["ShopLocationId"];
         delete appointmentdetails.ShopLocation;
-        appointmentdetails.ServiceId = appointmentdetails.ServiceName.ServiceId;
+        appointmentdetails.ServiceId = this.ServiceSampleObj.itemData["ServicesId"];
         delete appointmentdetails.ServiceName;
 
          this.http.post(this.isEditable ? APP_CONSTANT.APPONTMENTDETAILS.EDIT : APP_CONSTANT.APPONTMENTDETAILS.ADD, appointmentdetails, httpOptions)

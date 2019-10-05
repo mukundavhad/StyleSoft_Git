@@ -15,8 +15,8 @@ export class SaloonDetailsService {
      
   }
     searchShopLocation(searchString) {
-    return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION, JSON.stringify(searchString));
-  }
+        return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION,JSON.stringify(searchString));
+    }
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

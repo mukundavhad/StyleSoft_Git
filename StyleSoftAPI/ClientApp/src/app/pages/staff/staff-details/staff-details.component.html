@@ -11,7 +11,9 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Salon Owner Mobile :</strong></label>
-                                <input formControlName="SalonOwnerMobile" appValidationBorder type="text" pInputText id="salonownermobile" name="salonownermobile" class="form-control">
+                                <div>
+                                    <input formControlName="SalonOwnerMobile" appValidationBorder type="text" pInputText id="salonownermobile" name="salonownermobile" class="form-control">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -19,8 +21,9 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Shop Location :</strong></label>
-                                <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
-                                                [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
+                                <div>
+                                    <ejs-autocomplete #Locationsample id='ShopLocationId' formControlName='ShopLocation'  name='shoplocation' [dataSource]='shoplocationList' [placeholder]='textlocation' [fields]='fieldlocation' [autofill]='autofill' [filterType]='filterType' [value] = 'value'></ejs-autocomplete>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +40,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="card-block">
-                            <div class="form-group">
+                            <div class="form-group"> 
                                 <label for="textarea-input"><strong>Staff Mobile No :</strong></label>
                                 <div>
                                     <span class="ui-float-label">
@@ -53,8 +56,10 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Address :</strong></label>
-                                <p-autoComplete formControlName="Address" [suggestions]="addressList" (completeMethod)="searchAddress($event)"
-                                                [dropdown]="true" [forceSelection]="true" field="Address1"></p-autoComplete>
+                                <div>
+                                    <ejs-autocomplete #Addresssample id='AddressId' formControlName='Address'  name='address' [dataSource]='addressList'  [placeholder]='textaddress' [fields]='fieldaddress'
+                                                      [autofill]='autofill' [filterType]='filterType'></ejs-autocomplete>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +69,9 @@
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="select"><strong>Commission(%) :</strong></label>
-                                <input formControlName="CommissionPercentage" appValidationBorder type="text" pInputText id="commissionpercentage" name="commissionpercentage" class="form-control">
+                                <div>
+                                    <input formControlName="CommissionPercentage" appValidationBorder type="text" pInputText id="commissionpercentage" name="commissionpercentage" class="form-control">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,7 +83,7 @@
                                     <span class="ui-float-label">
                                         <input formControlName="CurrentlyWorkingInd" appValidationBorder type="text" pInputText id="currentlyworkingind" name="currentlyworkingind" class="form-control">
                                     </span>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>

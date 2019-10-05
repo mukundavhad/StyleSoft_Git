@@ -12,13 +12,9 @@ export class ServicesDetailsService {
 
   loadServicesDetails() {
       return this.http.get(APP_CONSTANT.SERVICESDETAILS.GETALL);
+     
   }
     
-
-    searchServiceName(searchString) {
-        return this.http.post(APP_CONSTANT.SERVICESDETAILS.SEARCH_SERVICENAME, JSON.stringify(searchString));
-    }
-
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

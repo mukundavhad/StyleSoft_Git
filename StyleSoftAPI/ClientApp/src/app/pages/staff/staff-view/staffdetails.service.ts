@@ -14,9 +14,7 @@ export class StaffDetailsService {
       return this.http.get(APP_CONSTANT.STAFFDETAILS.GETALL);
      
   }
-  //searchCustomer(searchString) {
-  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.SEARCH_CUSTOMER, JSON.stringify(searchString));
-  //}
+    
 
   //getCustomerByID(id) {
   //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);

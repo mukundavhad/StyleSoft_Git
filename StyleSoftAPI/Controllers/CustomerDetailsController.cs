@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/CustomerDetails/")]
     public class CustomerDetailsController : Controller
     {
