@@ -12,6 +12,7 @@ namespace StyleSoft.Domain.Data.Models
 
         public int ServicesId { get; set; }
         public int EnrolledSalonId { get; set; }
+        
         public int? ShopLocationId { get; set; }
         public string ServiceName { get; set; }
         public string ServiceDescription { get; set; }
