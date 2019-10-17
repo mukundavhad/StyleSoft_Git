@@ -19,6 +19,12 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
+        public int GetStaffNo()
+        {
+            int maxStaffNo = this.ktConContext.StaffDetails.Select(p => p.StaffId).DefaultIfEmpty(0).Max() + 1;
+            return maxStaffNo;
+        }
+
         //public IEnumerable<TblCustomerMaster> SearchCustomer(string searchString)
         //{
         //    if(string.IsNullOrEmpty(searchString))
@@ -27,14 +33,28 @@ namespace StyleSoft.Domain.Data.Repositories
         //   return this.ktConContext.Set<TblCustomerMaster>().Where(customer => customer.CustmerName.ToLower().Contains(searchString.ToLower()));
         //}
 
-        //public IEnumerable<TblCustomerMaster> GetAllCustomer()
-        //{
+        public IEnumerable<StaffDetailsView> GetAllStaffDetails()
+        {
+            var staff = (from s in this.ktConContext.StaffDetails
+                            join e in this.ktConContext.Address
+                            on s.AddressId equals e.AddressId
+                            join sl in this.ktConContext.SalonLocation
+                            on s.ShopLocationId equals sl.ShopLocationId
+                            select new StaffDetailsView
+                            {
+                                StaffId = s.StaffId,
+                                AddressId = Convert.ToInt32(s.AddressId),
+                                Address1=e.Address1,
+                                StaffMobileNumber=s.StaffMobileNumber,
+                                ShopLocationId = s.ShopLocationId,
+                                ShopName = sl.ShopName,
+                                StaffName = s.StaffName,
+                                CurrentlyWorkingInd = s.CurrentlyWorkingIndicator,
+                                CommissionPercentage = s.CommissionPercentage
 
-        //    var TblCustomerMasters = this.ktConContext.TblCustomerMaster
-        //               .Include(blog => blog.Location)
-        //               .ToList();
-        //    return TblCustomerMasters;
-        //}
+                            });
+            return staff.ToList();
+        }
 
         bool IStaffDetailsRepository.Authenticate()
         {

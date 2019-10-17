@@ -15,6 +15,7 @@ namespace StyleSoft.Domain.Data.Models
         }
 
         public int ShopLocationId { get; set; }
+        public int EnrolledSalonId { get; set; }
         public DateTime? EnrolmentDate { get; set; }
         public string ShopName { get; set; }
         public string ShopAddress1 { get; set; }
@@ -26,6 +27,7 @@ namespace StyleSoft.Domain.Data.Models
         public decimal? Cgst { get; set; }
         public decimal? Sgst { get; set; }
 
+        public EnrolledSalon EnrolledSalon { get; set; }
         public ICollection<Appointment> Appointment { get; set; }
         public ICollection<Offers> Offers { get; set; }
         public ICollection<Services> Services { get; set; }

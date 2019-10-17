@@ -18,14 +18,35 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
-        public IEnumerable<Services> GetAllServicesDetails()
+        public int GetServiceNo()
         {
-            var services = this.ktConContext.Services
-                       .Include(blog => blog.EnrolledSalon)
-                       .Include(blog=>blog.ShopLocation)
-                       .Include(blog=>blog.Category)
-                       .ToList();
-            return services;
+            int maxServiceNo = this.ktConContext.Services.Select(p => p.ServicesId).DefaultIfEmpty(0).Max() + 1;
+            return maxServiceNo;
+        }
+
+        public IEnumerable<ServicesView> GetAllServicesDetails()
+        {
+            var services = (from s in this.ktConContext.Services
+                            join e in this.ktConContext.EnrolledSalon
+                            on s.EnrolledSalonId equals e.EnrolledSalonId
+                            join sl in this.ktConContext.SalonLocation
+                            on s.ShopLocationId equals sl.ShopLocationId
+                            select new ServicesView
+                            {
+                                ServicesId = s.ServicesId,
+                                EnrolledSalonId = s.EnrolledSalonId,
+                                OwnerName = e.SalonOwnerName,
+                                ShopLocationId = s.ShopLocationId,
+                                ShopName = sl.ShopName,
+                                ServiceName = s.ServiceName,
+                                ServiceDescription = s.ServiceDescription,
+                                ServiceCost = s.ServiceCost,
+                                ServiceDuration = s.ServiceDuration,
+                                Gender = s.Gender,
+                                CommissionPercentage = s.CommissionPercentage
+                            });
+            return services.ToList();
+
         }
 
         public IEnumerable<Services> SearchServiceName(string searchString)

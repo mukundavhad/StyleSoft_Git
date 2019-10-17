@@ -19,6 +19,12 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
+        public int GetSaloonNo()
+        {
+            int maxSaloonNo = this.ktConContext.SalonLocation.Select(p => p.ShopLocationId).DefaultIfEmpty(0).Max() + 1;
+            return maxSaloonNo;
+        }
+
         public IEnumerable<SalonLocation> SearchShopLocation(string searchString)
         {
             if (string.IsNullOrEmpty(searchString))

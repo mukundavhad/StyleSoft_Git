@@ -17,11 +17,11 @@ namespace StyleSoft.Domain.Data.Models
 
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Appointment> Appointment { get; set; }
+        public virtual DbSet<AppointmentDt> AppointmentDt { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<EnrolledSalon> EnrolledSalon { get; set; }
         public virtual DbSet<Offers> Offers { get; set; }
         public virtual DbSet<SalonLocation> SalonLocation { get; set; }
-        public virtual DbSet<ServiceCategory> ServiceCategory { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<StaffDetails> StaffDetails { get; set; }
         public virtual DbSet<TblUserInfo> TblUserInfo { get; set; }
@@ -34,7 +34,7 @@ namespace StyleSoft.Domain.Data.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=ADMIN-PC\\SQLEXPRESS;Database=Stylesoft1;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=ADMIN-PC\\SQLEXPRESS;Database=Stylesoft;Trusted_Connection=True;");
             }
         }
 
@@ -79,7 +79,9 @@ namespace StyleSoft.Domain.Data.Models
             {
                 entity.Property(e => e.AppointmentDate).HasColumnType("datetime");
 
-                entity.Property(e => e.AppointmentTime).IsRowVersion();
+                entity.Property(e => e.CancelRemarks)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
@@ -89,6 +91,10 @@ namespace StyleSoft.Domain.Data.Models
 
                 entity.Property(e => e.RelationType)
                     .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Status)
@@ -103,16 +109,27 @@ namespace StyleSoft.Domain.Data.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Appointment_EnrolledSalon");
 
-                entity.HasOne(d => d.Service)
-                    .WithMany(p => p.Appointment)
-                    .HasForeignKey(d => d.ServiceId)
-                    .HasConstraintName("FK_Appointment_services");
-
                 entity.HasOne(d => d.ShopLocation)
                     .WithMany(p => p.Appointment)
                     .HasForeignKey(d => d.ShopLocationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Appointment_ShopLocation");
+            });
+
+            modelBuilder.Entity<AppointmentDt>(entity =>
+            {
+                entity.HasKey(e => e.PkId);
+
+                entity.ToTable("AppointmentDT");
+
+                entity.Property(e => e.Time)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Appointment)
+                    .WithMany(p => p.AppointmentDt)
+                    .HasForeignKey(d => d.AppointmentId)
+                    .HasConstraintName("FK_AppointmentDT_Appointment");
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -153,7 +170,7 @@ namespace StyleSoft.Domain.Data.Models
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.SalonOwnerEmailId)
-                    .HasMaxLength(30)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SalonOwnerMobile)
@@ -234,23 +251,18 @@ namespace StyleSoft.Domain.Data.Models
                 entity.Property(e => e.State)
                     .HasMaxLength(20)
                     .IsUnicode(false);
-            });
 
-            modelBuilder.Entity<ServiceCategory>(entity =>
-            {
-                entity.HasKey(e => e.CategoryId);
-
-                entity.Property(e => e.CategoryName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CreateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.HasOne(d => d.EnrolledSalon)
+                    .WithMany(p => p.SalonLocation)
+                    .HasForeignKey(d => d.EnrolledSalonId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SalonLocation_EnrolledSalon");
             });
 
             modelBuilder.Entity<Services>(entity =>
             {
+                entity.Property(e => e.ServicesId).ValueGeneratedNever();
+
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Gender)
@@ -261,19 +273,15 @@ namespace StyleSoft.Domain.Data.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ServiceDuration).IsRowVersion();
-
-                entity.Property(e => e.ServiceName)
+                entity.Property(e => e.ServiceDuration)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.ServiceName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Services)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Services_Services_CategoryId");
+                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.EnrolledSalon)
                     .WithMany(p => p.Services)
@@ -291,13 +299,17 @@ namespace StyleSoft.Domain.Data.Models
             {
                 entity.HasKey(e => e.StaffId);
 
+                entity.Property(e => e.CommissionOn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.CurrentlyWorkingInd)
+                entity.Property(e => e.CurrentlyWorkingIndicator)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.SalonOwnerMobile)
+                entity.Property(e => e.FromTime)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -309,7 +321,17 @@ namespace StyleSoft.Domain.Data.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ToTime)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Address)
+                    .WithMany(p => p.StaffDetails)
+                    .HasForeignKey(d => d.AddressId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_StaffDetails_Address");
 
                 entity.HasOne(d => d.ShopLocation)
                     .WithMany(p => p.StaffDetails)

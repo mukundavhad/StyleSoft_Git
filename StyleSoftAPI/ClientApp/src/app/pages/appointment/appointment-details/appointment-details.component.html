@@ -4,111 +4,308 @@
             <strong>Appointment Details</strong>
             <!--<small>Form</small>-->
         </div>
-        <div>
-            <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit(appointmentForm.value)">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="select"><strong>Owner Name :</strong></label>
-                                <div>
-                                    <p-autoComplete formControlName="OwnerName" [suggestions]="ownernameList" (completeMethod)="searchOwnerName($event)"
-                                                    [dropdown]="true" [forceSelection]="true" field="SalonOwnerName"></p-autoComplete> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="select"><strong>Shop Location :</strong></label>
-                                <div>
-                                    <p-autoComplete formControlName="ShopLocation" [suggestions]="shoplocationList" (completeMethod)="searchShopLocation($event)"
-                                                    [dropdown]="true" [forceSelection]="true" field="ShopName"></p-autoComplete>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="textarea-input"><strong>Customer Mobile :</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <input formControlName="CustomerMobile" appValidationBorder type="text" pInputText id="customermobile" name="customermobile" class="form-control">
-                                    </span>
-                                </div>
-                            </div>
+        <!--<form [formGroup]="bookingdetailsForm" (ngSubmit)="saveBookingDetails()">-->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="select"><strong>Owner Name :</strong></label>
+                        <div>
+                            <ejs-autocomplete #EnrolledSalonSample [(ngModel)]="AppointmentMaster.OwnerName" [dataSource]='ownernameList' [placeholder]='textownername' [fields]='fieldownername' [autofill]='autofill' [filterType]='filterType'>
+                            </ejs-autocomplete>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="textarea-input"><strong>Relation Type :</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <select formControlName="RelationType" appValidationBorder id="select" name="select" class="form-control">
-                                            <option value="Please select">Please select</option>
-                                            <option value="Self">Self</option>
-                                            <option value="Spouse">Spouse</option>
-                                            <option value="Child">Child</option>
-                                            <option value="Guest">Guest</option>
-                                        </select>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="textarea-input"><strong>Appointment Date :</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <p-calendar formControlName="AppointmentDate" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="textarea-input"><strong>Appointment Time :</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <input formControlName="AppointmentTime" appValidationBorder type="text" pInputText id="appointmenttime" name="appointmenttime" class="form-control">
-                                        <!--<p-calendar formControlName="AppointmentTime" [showIcon]="true" appValidationBorder showButtonBar="true"></p-calendar>-->
-                                    </span>
-                                </div>
-                            </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="select"><strong>Shop Locality :</strong></label>
+                        <div>
+                            <ejs-autocomplete #ShopLocationSample [(ngModel)]="AppointmentMaster.Locality" [dataSource]='shoplocationList' [placeholder]='textshoplocation' [fields]='fieldshoplocation' [autofill]='autofill' [filterType]='filterType'>
+                            </ejs-autocomplete>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="card-block">
-                            <div class="form-group">
-                                <label for="select"><strong>Service Name :</strong></label>
-                                <div>
-                                    <span class="ui-float-label">
-                                        <p-autoComplete formControlName="ServiceName" [suggestions]="servicenameList" (completeMethod)="searchServiceName($event)"
-                                                        [dropdown]="true" [forceSelection]="true" field="ServiceName"></p-autoComplete>
-                                    </span>
-                                </div>
-                            </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Customer Mobile :</strong></label>
+                        <div>
+                            <span class="ui-float-label">
+                                <input [(ngModel)]="AppointmentMaster.CustomerMobile" appValidationBorder type="text" pInputText id="customermobile" name="customermobile" class="form-control">
+                            </span>
                         </div>
                     </div>
                 </div>
-
-                <div class="input-group-btn" dropdown>
-                    <button type="submit" class="btn btn-outline-primary">&nbsp; SUBMIT </button>
-                </div>
-            </form>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Relation Type :</strong></label>
+                        <div>
+                            <span class="ui-float-label">
+                                <select [(ngModel)]="AppointmentMaster.RelationType" appValidationBorder id="select" name="select" class="form-control">
+                                    <option value="Please select">Please select</option>
+                                    <option value="Self">Self</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Child">Child</option>
+                                    <option value="Guest">Guest</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Appointment Date :</strong></label>
+                        <div>
+                            <span class="ui-float-label">
+                                <ejs-datetimepicker [(ngModel)]="AppointmentMaster.AppointmentDate" placeholder='Select a date and time' ></ejs-datetimepicker>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Appointment Status :</strong></label>
+                        <div>
+                            <span class="ui-float-label">
+                                <select [(ngModel)]="AppointmentMaster.Status" appValidationBorder id="select" name="select" class="form-control">
+                                    <option value="Confirmed">Confirmed</option>
+                                    <option value="Arrive">Arrive</option>
+                                    <option value="Start">Start</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Not Came">Not Came</option>
+                                    <option value="Reschedule">Reschedule</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Remarks:</strong></label>
+                        <div>
+                            <input [(ngModel)]="AppointmentMaster.Remarks" type="text" pInputText id="remarks" name="remarks" class="form-control" rows="3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>  Cancel Remarks:</strong></label>
+                        <div>
+                            <input [(ngModel)]="AppointmentMaster.CancelRemarks" type="text" pInputText id="cancelremarks" name="cancelremarks" class="form-control" rows="3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="detailsGrid" class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Apply Services Details</strong>
+                    <div style="width:10px">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="card-block ">
+                            <div class="form-group">
+                                Service Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card-block ">
+                            <div class="form-group">
+                                Staff Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Time
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Quantity
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Price
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Discount
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Total
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                Action
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" *ngFor="let item of AppointmentDetailsList">
+                    <div class="col-sm-2">
+                        <div class="card-block">
+                            <div class="form-group"> 
+                                <ejs-autocomplete #ServiceSample [(ngModel)]="item.ServiceName" [dataSource]='servicenameList' [placeholder]='textservicename' [fields]='fieldservicename'
+                                                  [autofill]='autofill' [filterType]='filterType' (change)="onSelectServicename($event,item)">
+                                </ejs-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <span class="ui-float-label">
+                                    <ejs-autocomplete #StaffSample [(ngModel)]="item.StaffName" [dataSource]='staffnameList' [placeholder]='textstaffname' [fields]='fieldstaffname' 
+                                                      [autofill]='autofill' [filterType]='filterType' (change)="onSelectStaffname($event,item)">
+                                    </ejs-autocomplete>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="item.Time" pInputText id="time" name="time" class="form-control" rows="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <input type="text" (change)="calculateTaxableAmount($event,item)" [(ngModel)]="item.Quantity" pInputText id="quantity" name="quantity" class="form-control" rows="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <input type="text" (change)="calculateTaxableAmount($event,item)" [(ngModel)]="item.Price" pInputText id="price" name="price" class="form-control" rows="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="item.Discount" pInputText id="discount" name="discount" class="form-control" rows="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="item.Total" pInputText id="total" name="total" class="form-control" rows="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="card-block">
+                            <div class="form-group">
+                                <button type="button" (click)="removeItem(item)"><i class="pi pi-times" style="font-size:large;"></i></button>
+                                <i class="fa icon-trash" style="height:25px;width:20px;padding-top:10px;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
+                        <button type="button" (click)="addNewItem()">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="card-block">
+                    <div class="form-group">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-block">
+                    <div class="form-group">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-block">
+                    <div class="form-group">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card-block">
+                    <div class="form-group">
+                        <label for="textarea-input"><strong>Grand Total:</strong></label>
+                        <div>
+                            <input [(ngModel)]="AppointmentMaster.GrandTotal" type="text" pInputText id="grandtotal" name="grandtotal" class="form-control" rows="3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10"></div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-outline-primary" (click)="saveItems(false)">SAVE</button>
+            </div>
+
+        </div>
+        <!--</form>-->
     </div>
 </div>
+

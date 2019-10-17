@@ -9,6 +9,8 @@ namespace StyleSoft.Domain.Data.Contract
         bool Authenticate();
         IEnumerable<SalonLocation> SearchShopLocation(string searchString);
 
+        int GetSaloonNo();
+
         //IEnumerable<SalonLocation> GetAllSaloonDetails();
     }
 }

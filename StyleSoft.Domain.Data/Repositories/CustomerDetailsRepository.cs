@@ -19,6 +19,12 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
+        public int GetCustomerNo()
+        {
+            int maxCustomerNo = this.ktConContext.Customer.Select(p => p.CustomerId).DefaultIfEmpty(0).Max() + 1;
+            return maxCustomerNo;
+        }
+
         //public IEnumerable<TblCustomerMaster> SearchCustomer(string searchString)
         //{
         //    if(string.IsNullOrEmpty(searchString))

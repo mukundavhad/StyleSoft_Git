@@ -21,6 +21,20 @@ namespace StyleSoftAPI.Controllers
             _repoWrapper = repoWrapper;
         }
 
+        [HttpGet("[action]")]
+        public int GetSaloonNo()
+        {
+            try
+            {
+                int salonno = this._repoWrapper.Saloon.GetSaloonNo();
+                return salonno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<SalonLocation> GetAll()
@@ -36,12 +50,12 @@ namespace StyleSoftAPI.Controllers
             return SalonLocation;
         }
 
-        //[HttpPost("GetByID")] 
-        //public TblCustomerMaster GetByID([FromBody] int customerId)
-        //{
-        //    var Cusotmer = this._repoWrapper.Customer.FindByCondition(x=> x.CustomerId == customerId).FirstOrDefault();
-        //    return Cusotmer;
-        //}
+        [HttpPost("GetByID")]
+        public SalonLocation GetByID([FromBody] int shopLocationId)
+        {
+            var shopLocation = this._repoWrapper.Saloon.FindByCondition(x => x.ShopLocationId == shopLocationId).FirstOrDefault();
+            return shopLocation;
+        }
         [HttpPost("Add")]
         public bool Add([FromBody] SalonLocation saloon)
         {

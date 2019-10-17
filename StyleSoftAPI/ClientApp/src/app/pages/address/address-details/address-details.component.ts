@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APP_CONSTANT } from '../../../../config';
 import { DialogRef } from '../../../dialog/dialog-ref';
 import { AddressDetailsService } from '../address-view/addressdetails.service';
+import { DialogConfig } from '../../../dialog/dialog-config';
 
 @Component({
     selector: 'app-address-details',
@@ -16,11 +17,18 @@ export class AddressDetailsComponent implements OnInit   {
     public addressForm: FormGroup;
     public isEditable: boolean = false;
 
-    constructor(private router: Router, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private addressdetailsservice: AddressDetailsService) {
+    constructor(private router: Router, private config: DialogConfig, private dialog: DialogRef, private formBuilder: FormBuilder, private http: HttpClient, private addressdetailsservice: AddressDetailsService) {
       //this.router = router;
   }
 
     ngOnInit() {
+
+        //if (this.config.isEditable == false) {
+        //    this.addressdetailsservice.getAddressNo()
+        //        .subscribe((addressno: any) => {
+        //            this.addressForm.controls['AddressId'].patchValue(addressno);
+        //        });
+        //}
 
         this.addressForm = this.formBuilder.group({
             AddressId: [0],
@@ -30,8 +38,20 @@ export class AddressDetailsComponent implements OnInit   {
             Locality: [],
             City: [],
             State: [],
-            PinCode: [] 
+            PinCode: [],
+            CreateDate: [],
+            UpdateDate: []
         });
+
+        if (this.config.isEditable == true) {
+            this.setDataForEdit();
+        }
+    }
+
+    setDataForEdit = () => {
+        this.isEditable = true;
+        let addressForm = this.config.data;
+        this.addressForm.setValue(this.config.data);
     }
 
     public onSubmit(values: Object): void {
@@ -48,6 +68,7 @@ export class AddressDetailsComponent implements OnInit   {
                     this.dialog.close(addressdetails);
                 }
                 return addressdetails;
+
             });
     }
 }

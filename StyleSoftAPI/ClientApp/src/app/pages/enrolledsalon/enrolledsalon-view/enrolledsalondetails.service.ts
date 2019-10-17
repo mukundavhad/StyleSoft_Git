@@ -10,20 +10,21 @@ providedIn :'root'
 export class EnrolledSalonDetailsService {
   constructor(private http: HttpClient) { }
 
-  loadenrolledsalonDetails() {
+  loadEnrolledSalonDetails() {
       return this.http.get(APP_CONSTANT.ENROLLEDSALONDETAILS.GETALL);
      
   }
-
     searchOwnerName(searchString) {
         return this.http.post(APP_CONSTANT.ENROLLEDSALONDETAILS.SEARCH_OWNERNAME, JSON.stringify(searchString));
     }
-  
 
-  //getCustomerByID(id) {
-  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);
-  //}
+    getEnrolledSalonDetailsByID(id) {
+        return this.http.post(APP_CONSTANT.ENROLLEDSALONDETAILS.GETByID, id);
+    }
 
+    getEnrolledSalonNo() {
+        return this.http.get(APP_CONSTANT.ENROLLEDSALONDETAILS.GETENROLLEDSALONNO);
+    }
 }
 
 

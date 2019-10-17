@@ -8,7 +8,8 @@ using StyleSoft.Domain.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
-    //[Authorize][Produces("application/json")]
+   //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/AddressDetails/")]
     public class AddressDetailsController : Controller
     {
@@ -20,6 +21,20 @@ namespace StyleSoftAPI.Controllers
             _repoWrapper = repoWrapper;
         }
 
+        [HttpGet("[action]")]
+        public int GetAddressNo()
+        {
+            try
+            {
+                int addressno = this._repoWrapper.Address.GetAddressNo();
+                return addressno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<Address> GetAll()

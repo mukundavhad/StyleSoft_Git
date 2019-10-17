@@ -5,6 +5,11 @@ namespace StyleSoft.Domain.Data.Models
 {
     public partial class Address
     {
+        public Address()
+        {
+            StaffDetails = new HashSet<StaffDetails>();
+        }
+
         public int AddressId { get; set; }
         public string Mobile { get; set; }
         public string Address1 { get; set; }
@@ -15,5 +20,7 @@ namespace StyleSoft.Domain.Data.Models
         public string PinCode { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
+
+        public ICollection<StaffDetails> StaffDetails { get; set; }
     }
 }

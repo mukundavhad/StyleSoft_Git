@@ -12,7 +12,6 @@ namespace StyleSoft.Domain.Data.Contract
         IAddressDetailsRepository Address { get; }
         ICustomerDetailsRepository Customer { get; }
         IStaffDetailsRepository Staff { get; }
-        IServiceCategoryDetailsRepository ServiceCategory { get; }
         IServicesDetailsRepository Services { get; }
         IAppointmentDetailsRepository Appointment { get; }
     }

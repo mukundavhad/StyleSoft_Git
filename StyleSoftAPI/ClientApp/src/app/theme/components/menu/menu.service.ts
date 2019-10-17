@@ -100,7 +100,7 @@ export class MenuService {
       this.renderer2.addClass(caret, 'fa');
       this.renderer2.addClass(caret, 'fa-angle-up');
       this.renderer2.appendChild(link, caret);
-      this.renderer2.setAttribute(link, 'data-toggle', 'collapse');
+      this.renderer2.setAttribute(link, 'data-toggle', 'collapse');      
       this.renderer2.setAttribute(link, 'href', '#collapse'+menuItem.id);
       let collapse = this.renderer2.createElement('div');
       this.renderer2.setAttribute(collapse, 'id', 'collapse'+menuItem.id);
@@ -183,7 +183,7 @@ export class MenuService {
 
   public getActiveLink(menu:Array<Menu>){
       let url = this.location.path();
-      let routerLink = (url) ? url : '/'; // url.substring(1, url.length);
+      let routerLink = (url) ? url : '/';  // url.substring(1, url.length);
       let activeMenuItem = menu.filter(item => item.routerLink === routerLink);
       if(activeMenuItem[0]){
         let activeLink = document.querySelector("#link"+activeMenuItem[0].id);

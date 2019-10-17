@@ -9,6 +9,7 @@ namespace StyleSoft.Domain.Data.Models
         {
             Appointment = new HashSet<Appointment>();
             Offers = new HashSet<Offers>();
+            SalonLocation = new HashSet<SalonLocation>();
             Services = new HashSet<Services>();
             Token = new HashSet<Token>();
         }
@@ -22,6 +23,7 @@ namespace StyleSoft.Domain.Data.Models
 
         public ICollection<Appointment> Appointment { get; set; }
         public ICollection<Offers> Offers { get; set; }
+        public ICollection<SalonLocation> SalonLocation { get; set; }
         public ICollection<Services> Services { get; set; }
         public ICollection<Token> Token { get; set; }
     }

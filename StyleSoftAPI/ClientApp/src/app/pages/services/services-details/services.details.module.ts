@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServicesDetailsComponent } from './services-details.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 
 export const routes = [
     { path: '', component: ServicesDetailsComponent, pathMatch: 'full' }

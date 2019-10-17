@@ -8,7 +8,10 @@ namespace StyleSoft.Domain.Data.Contract
     {
         bool Authenticate();
 
-        IEnumerable<Appointment> GetAllAppointmentDetails();
-       
+        IEnumerable<AppointmentView> GetAllAppointmentDetails();
+
+        int GetAppointmentNo();
+        void SaveAppointmentMaster(Appointment master);
+
     }
 }

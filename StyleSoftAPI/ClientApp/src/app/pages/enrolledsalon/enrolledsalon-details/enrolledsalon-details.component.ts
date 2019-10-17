@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APP_CONSTANT } from '../../../../config';
 import { EnrolledSalonDetailsService } from '../enrolledsalon-view/enrolledsalondetails.service';
 import { DialogRef } from '../../../dialog/dialog-ref';
+import { DialogConfig } from '../../../dialog/dialog-config';
 
 @Component({
     selector: 'app-enrolledsalon-details',
@@ -16,18 +17,36 @@ export class EnrolledSalonDetailsComponent implements OnInit   {
     public enrolledsalonForm: FormGroup;
     public isEditable: boolean = false;
 
-    constructor(private router: Router, private dialog: DialogRef,private formBuilder: FormBuilder, private http: HttpClient, private enrolledsalondetailsservice: EnrolledSalonDetailsService) {
+    constructor(private router: Router, private config: DialogConfig, private dialog: DialogRef,private formBuilder: FormBuilder, private http: HttpClient, private enrolledsalondetailsservice: EnrolledSalonDetailsService) {
       //this.router = router;
   }
 
     ngOnInit() {
+
+        //if (this.config.isEditable == false) {
+        //    this.enrolledsalondetailsservice.getEnrolledSalonNo()
+        //        .subscribe((enrolledsalonno: any) => {
+        //            this.enrolledsalonForm.controls['EnrolledSalonId'].patchValue(enrolledsalonno);
+        //        });
+        //}
 
         this.enrolledsalonForm = this.formBuilder.group({
             EnrolledSalonId: [0],
             SalonOwnerMobile: [],
             SalonOwnerName: [],
             SalonOwnerEmailId: [],
+            CreateDate: [],
+            UpdateDate: []
         });
+        if (this.config.isEditable == true) {
+            this.setDataForEdit();
+        }
+    }
+
+    setDataForEdit = () => {
+        this.isEditable = true;
+        let enrolledsalonForm = this.config.data;
+        this.enrolledsalonForm.setValue(this.config.data);
     }
 
     public onSubmit(values: Object): void {

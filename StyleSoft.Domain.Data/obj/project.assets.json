@@ -3616,34 +3616,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chintamani\\.nuget\\packages\\": {},
-    "D:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\ProgramData\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Angular-Study\\StyleSoft_Git\\StyleSoft.Domain.Data\\StyleSoft.Domain.Data.csproj",
+      "projectUniqueName": "E:\\Stylesoft_ProFinal\\Stylesoft_GitNew\\StyleSoft.Domain.Data\\StyleSoft.Domain.Data.csproj",
       "projectName": "StyleSoft.Domain.Data",
-      "projectPath": "E:\\Angular-Study\\StyleSoft_Git\\StyleSoft.Domain.Data\\StyleSoft.Domain.Data.csproj",
-      "packagesPath": "C:\\Users\\chintamani\\.nuget\\packages\\",
-      "outputPath": "E:\\Angular-Study\\StyleSoft_Git\\StyleSoft.Domain.Data\\obj\\",
+      "projectPath": "E:\\Stylesoft_ProFinal\\Stylesoft_GitNew\\StyleSoft.Domain.Data\\StyleSoft.Domain.Data.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "E:\\Stylesoft_ProFinal\\Stylesoft_GitNew\\StyleSoft.Domain.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\ProgramData\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\chintamani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://packagesource": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

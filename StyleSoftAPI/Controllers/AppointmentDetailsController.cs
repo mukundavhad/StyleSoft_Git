@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/AppointmentDetails/")]
     public class AppointmentDetailsController : Controller
     {
@@ -20,7 +21,22 @@ namespace StyleSoftAPI.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<Appointment> GetAll()
+        public int GetAppointmentNo()
+        {
+            try
+            {
+                int appointmentno = this._repoWrapper.Appointment.GetAppointmentNo();
+                return appointmentno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<AppointmentView> GetAll()
         {
             var appointmentdetails = this._repoWrapper.Appointment.GetAllAppointmentDetails().ToList();
             return appointmentdetails;
@@ -57,6 +73,21 @@ namespace StyleSoftAPI.Controllers
                 this._repoWrapper.Appointment.Save();
                 return true;
             }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost("SaveAppointmentMaster")]
+        public bool SaveAppointmentMaster([FromBody] Appointment appointmentMt)
+        {
+            try
+            {
+                this._repoWrapper.Appointment.SaveAppointmentMaster(appointmentMt);
+                return true;
+            }
+
             catch (Exception e)
             {
                 return false;

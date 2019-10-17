@@ -23,6 +23,21 @@ namespace StyleSoftAPI.Controllers
 
 
         [HttpGet("[action]")]
+        public int GetEnrolledSalonNo()
+        {
+            try
+            {
+                int enrolledsalonno = this._repoWrapper.EnrolledSalon.GetEnrolledSalonNo();
+                return enrolledsalonno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        [HttpGet("[action]")]
         public IEnumerable<EnrolledSalon> GetAll()
         {
             var EnrolledSalondetails = this._repoWrapper.EnrolledSalon.FindAll().ToList();
@@ -36,12 +51,14 @@ namespace StyleSoftAPI.Controllers
             return EnrolledSalon1;
         }
 
-        //[HttpPost("GetByID")] 
-        //public TblCustomerMaster GetByID([FromBody] int customerId)
-        //{
-        //    var Cusotmer = this._repoWrapper.Customer.FindByCondition(x=> x.CustomerId == customerId).FirstOrDefault();
-        //    return Cusotmer;
-        //}
+        [HttpPost("GetByID")]
+        public EnrolledSalon GetByID([FromBody] int EnrolledSalonId)
+        {
+            var enrolledSalon1 = this._repoWrapper.EnrolledSalon.FindByCondition(x => x.EnrolledSalonId == EnrolledSalonId).FirstOrDefault();
+            return enrolledSalon1;
+        }
+
+
         [HttpPost("Add")]
         public bool Add([FromBody] EnrolledSalon enrolledsalon)
         {

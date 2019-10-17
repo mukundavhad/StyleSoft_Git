@@ -12,16 +12,18 @@ export class SaloonDetailsService {
 
   loadSaloonDetails() {
       return this.http.get(APP_CONSTANT.SALOONDETAILS.GETALL);
-     
   }
     searchShopLocation(searchString) {
-    return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION, JSON.stringify(searchString));
-  }
+        return this.http.post(APP_CONSTANT.SALOONDETAILS.SEARCH_SHOPLOCATION,JSON.stringify(searchString));
+    }
 
-  //getCustomerByID(id) {
-  //  return this.http.post(APP_CONSTANT.CUSOTMER_API.GETByID,id);
-  //}
+    getShopLocationDetailsByID(id) {
+        return this.http.post(APP_CONSTANT.SALOONDETAILS.GETByID, id);
+    }
 
+    getSalonNo() {
+        return this.http.get(APP_CONSTANT.SALOONDETAILS.GETSALOONNO);
+    }
 }
 
 

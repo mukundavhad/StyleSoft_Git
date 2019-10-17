@@ -1,52 +1,147 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { APP_CONSTANT } from '../../../../config';
-import { Router } from '@angular/router';
-import { StaffDetailsService } from './staffdetails.service';
 import { DialogService } from '../../../dialog/dialog.service';
+import { StaffDetailsService } from './staffdetails.service';
 import { StaffDetailsComponent } from '../staff-details/staff-details.component';
-import { PageSettingsModel } from '@syncfusion/ej2-grids';
 
 @Component({
     selector: 'app-staff-view',
     templateUrl: './staff-view.component.html',
-    styleUrls: ['./staff-view.component.scss']
+  encapsulation: ViewEncapsulation.None
 })
-export class StaffViewComponent implements OnInit {
-    public rowData: Object[];
-    public pageSettings: PageSettingsModel;
-    constructor(private router: Router, private dialog: DialogService, private formBuilder: FormBuilder, private http: HttpClient, private staffdetailsservice: StaffDetailsService) { }
 
-    ngOnInit() {
+export class StaffViewComponent {
+  public data = [];
+  public settings = {
+    selectMode: 'single',  //single|multi
+    hideHeader: false,
+    hideSubHeader: false,
+    actions: {
+      columnTitle: 'Actions',
+      add: true,
+      edit: true,
+      delete: true,
+      custom: [],
+      position: 'right' // left|right
+    },
+    add: {     
+      addButtonContent: '<h4 class="mb-1"><i class="fa fa-plus ml-3 text-success"></i></h4>',
+      createButtonContent: '<i class="fa fa-check mr-3 text-success"></i>',
+      cancelButtonContent: '<i class="fa fa-times text-danger"></i>'
+    },
+    edit: {
+      editButtonContent: '<i class="fa fa-pencil mr-3 text-primary"></i>',
+      saveButtonContent: '<i class="fa fa-check mr-3 text-success"></i>',
+      cancelButtonContent: '<i class="fa fa-times text-danger"></i>'
+    },
+    delete: {
+      deleteButtonContent: '<i class="fa fa-trash-o text-danger"></i>',
+      confirmDelete: true
+    },
+    noDataMessage: 'No data found',
+    columns: {     
+        StaffId: {
+        title: 'ID',
+        editable: false,
+        width: '60px',
+        type: 'html',
+        valuePrepareFunction: (value) => { return '<div class="text-center">' + value + '</div>'; }       
+        },
+        SalonOwnerMobile: {
+            title: 'Owner Mobile',
+            type: 'string',
+            filter: true
+        },
+        ShopName: {
+            title: 'Shop Name',
+        type: 'string',
+        filter: true
+        },
+        Address1: {
+            title: 'Address',
+            type: 'string',
+            filter: true
+        },
+        StaffName: {
+            title: 'Staff Name',
+        type: 'string'
+        },
+        StaffMobileNumber: {
+            title: 'Staff Mobile',
+            type: 'string'
+        },
+        CurrentlyWorkingInd: {
+            title: 'Currently Working',
+        type: 'string'
+      },
+        CommissionPercentage: {
+            title: 'Commission(%)',
+            type: 'string'
+        },
+          
+    },
+    pager: {
+      display: true,
+      perPage: 10
+    }
+  };
 
-        let httpOptions = {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-        };
+    constructor(private http: HttpClient, private dialog: DialogService, private staffdetailsservice: StaffDetailsService) { 
+    //this.getData((data) => {
+    //  this.data = data;
+    //});
 
         this.staffdetailsservice.loadStaffDetails()
-            .subscribe((staff: any) => {
-                this.rowData = staff;
-            });
+          .subscribe((staff: any) => {
+              this.data = staff;
+          });
+  }
 
-        this.pageSettings = { pageSize: 6 };
-    }
-
-
-    redirectToAddNew() {
-        const ref = this.dialog.open(StaffDetailsComponent, { modalConfig: { title: 'Add/Edit Staff Details', width: '65%', height: '80%' }, isEditable: false });
+redirectToAddNew() {
+        const ref = this.dialog.open(StaffDetailsComponent, { data: {}, modalConfig: { title: 'Add/Edit Staff Details', width: '75%',height:'80%' }, isEditable: true });
         ref.afterClosed.subscribe(result => {
-            // this.rowData.push(result); //TODO this should be implemented like this
             this.RefreshGrid();
         });
     }
 
     RefreshGrid = () => {
-
         this.staffdetailsservice.loadStaffDetails()
             .subscribe((staff: any) => {
-                this.rowData = staff;
+                this.data = staff;
             });
-        this.pageSettings = { pageSize: 6 };
     }
+
+  //public getData(data) {
+  //  const req = new XMLHttpRequest();
+  //  req.open('GET', 'assets/data/users.json');
+  //  req.onload = () => {
+  //    data(JSON.parse(req.response));
+  //  };
+  //  req.send();
+  //}
+
+  public onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  public onRowSelect(event){
+   // console.log(event);
+  }
+
+  public onUserRowSelect(event){
+    //console.log(event);   //this select return only one page rows
+      const ref = this.dialog.open(StaffDetailsComponent, { data: event.data, modalConfig: { title: 'Add/Edit Staff Details', width: '75%', height: '80%' }, isEditable: true });
+      ref.afterClosed.subscribe(result => {
+          this.RefreshGrid();
+      });
+  }
+
+  public onRowHover(event){
+    //console.log(event);
+  }
+
 }

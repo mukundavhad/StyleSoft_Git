@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/CustomerDetails/")]
     public class CustomerDetailsController : Controller
     {
@@ -20,6 +21,20 @@ namespace StyleSoftAPI.Controllers
             _repoWrapper = repoWrapper;
         }
 
+        [HttpGet("[action]")]
+        public int GetCustomerNo()
+        {
+            try
+            {
+                int customerno = this._repoWrapper.Customer.GetCustomerNo();
+                return customerno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<Customer> GetAll()

@@ -8,6 +8,7 @@ namespace StyleSoft.Domain.Data.Contract
     {
         bool Authenticate();
         IEnumerable<Address> SearchAddress(string searchString);
+        int GetAddressNo();
 
         //IEnumerable<SalonLocation> GetAllSaloonDetails();
     }

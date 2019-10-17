@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StyleSoftAPI.Controllers
 {
     //[Authorize][Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/ServicesDetails/")]
     public class ServicesDetailsController : Controller
     {
@@ -20,7 +21,22 @@ namespace StyleSoftAPI.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<Services> GetAll()
+        public int GetServiceNo()
+        {
+            try
+            {
+                int serviceno = this._repoWrapper.Services.GetServiceNo();
+                return serviceno;
+            }
+
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<ServicesView> GetAll()
         {
             var servicesdetails = this._repoWrapper.Services.GetAllServicesDetails().ToList();
             return servicesdetails;
@@ -33,12 +49,12 @@ namespace StyleSoftAPI.Controllers
             return Servicename;
         }
 
-        //[HttpPost("GetByID")] 
-        //public TblCustomerMaster GetByID([FromBody] int customerId)
-        //{
-        //    var Cusotmer = this._repoWrapper.Customer.FindByCondition(x=> x.CustomerId == customerId).FirstOrDefault();
-        //    return Cusotmer;
-        //}
+        [HttpPost("GetByID")]
+        public Services GetByID([FromBody] int servicesId)
+        {
+            var services = this._repoWrapper.Services.FindByCondition(x => x.ServicesId == servicesId).FirstOrDefault();
+            return services;
+        }
 
         [HttpPost("Add")]
         public bool Add([FromBody] Services services)

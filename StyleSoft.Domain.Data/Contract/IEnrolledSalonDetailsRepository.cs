@@ -7,6 +7,7 @@ namespace StyleSoft.Domain.Data.Contract
        public interface IEnrolledSalonDetailsRepository : IRepositoryBase<EnrolledSalon>
     {
         bool Authenticate();
+        int GetEnrolledSalonNo();
         IEnumerable<EnrolledSalon> SearchOwnerName(string searchString);
 
         //IEnumerable<SalonLocation> GetAllSaloonDetails();

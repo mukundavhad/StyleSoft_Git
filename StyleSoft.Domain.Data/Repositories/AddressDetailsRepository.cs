@@ -19,6 +19,11 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
+        public int GetAddressNo()
+        {
+            int maxAddressNo = this.ktConContext.Address.Select(p => p.AddressId).DefaultIfEmpty(0).Max() + 1;
+            return maxAddressNo;
+        }
         public IEnumerable<Address> SearchAddress(string searchString)
         {
             if (string.IsNullOrEmpty(searchString))

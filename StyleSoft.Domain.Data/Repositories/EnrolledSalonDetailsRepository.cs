@@ -19,6 +19,12 @@ namespace StyleSoft.Domain.Data.Repositories
             this.ktConContext = ktConContext;
         }
 
+        public int GetEnrolledSalonNo()
+        {
+            int maxEnrolledSalonNo = this.ktConContext.EnrolledSalon.Select(p => p.EnrolledSalonId).DefaultIfEmpty(0).Max() + 1;
+            return maxEnrolledSalonNo;
+        }
+
         public IEnumerable<EnrolledSalon> SearchOwnerName(string searchString)
         {
             if (string.IsNullOrEmpty(searchString))
